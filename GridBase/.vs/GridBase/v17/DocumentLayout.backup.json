@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity\\GridBase\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|d:\\unity\\gridbase\\assets\\scripts\\battle\\battlecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\battle\\battlecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|d:\\unity\\gridbase\\assets\\scripts\\battle\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\battle\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|D:\\Unity\\GridBase\\assets\\scripts\\charachters\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\charachters\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|D:\\Unity\\GridBase\\assets\\scripts\\grid\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\grid\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|D:\\Unity\\GridBase\\assets\\scripts\\grid\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6361BCBE-3038-5AED-813A-0024D2A8E189}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\grid\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BattleController.cs",
+              "DocumentMoniker": "D:\\Unity\\GridBase\\Assets\\Scripts\\Battle\\BattleController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Battle\\BattleController.cs",
+              "ToolTip": "D:\\Unity\\GridBase\\Assets\\Scripts\\Battle\\BattleController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Battle\\BattleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:15:02.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TurnManager.cs",
+              "DocumentMoniker": "D:\\Unity\\GridBase\\Assets\\Scripts\\Battle\\TurnManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Battle\\TurnManager.cs",
+              "ToolTip": "D:\\Unity\\GridBase\\Assets\\Scripts\\Battle\\TurnManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Battle\\TurnManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:13:34.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Character.cs",
+              "DocumentMoniker": "D:\\Unity\\GridBase\\Assets\\Scripts\\Charachters\\Character.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Charachters\\Character.cs",
+              "ToolTip": "D:\\Unity\\GridBase\\Assets\\Scripts\\Charachters\\Character.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Charachters\\Character.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:13:07.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Tile.cs",
+              "DocumentMoniker": "D:\\Unity\\GridBase\\Assets\\Scripts\\Grid\\Tile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Grid\\Tile.cs",
+              "ToolTip": "D:\\Unity\\GridBase\\Assets\\Scripts\\Grid\\Tile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Grid\\Tile.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:12:43.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GridManager.cs",
+              "DocumentMoniker": "D:\\Unity\\GridBase\\Assets\\Scripts\\Grid\\GridManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Grid\\GridManager.cs",
+              "ToolTip": "D:\\Unity\\GridBase\\Assets\\Scripts\\Grid\\GridManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Grid\\GridManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:12:06.206Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
