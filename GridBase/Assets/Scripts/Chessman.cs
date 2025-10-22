@@ -291,14 +291,7 @@ public class Chessman : MonoBehaviour
         {
             case CastType.Ranger:
                 // Ranged: moves in lines (like queen) to represent range
-                LineMove(tiles, null, 1, 0);
-                LineMove(tiles, null, 0, 1);
-                LineMove(tiles, null, 1, 1);
-                LineMove(tiles, null, -1, 0);
-                LineMove(tiles, null, 0, -1);
-                LineMove(tiles, null, -1, -1);
-                LineMove(tiles, null, -1, 1);
-                LineMove(tiles, null, 1, -1);
+                SurroundMove(tiles, null);
                 break;
             case CastType.Fighter:
                 // Fighter: agile melee - use knight-like L move
@@ -408,36 +401,6 @@ public class Chessman : MonoBehaviour
             else if (piece.isEnemy != this.isEnemy)
             {
                 attackTiles?.Add(pos);
-            }
-        }
-    }
-
-    public void PawnMove(HashSet<Vector2Int> moveTiles, HashSet<Vector2Int> attackTiles, int xForward, int y)
-    {
-        if (gridManager == null) gridManager = GridManager.Instance;
-        Vector2Int pos = new Vector2Int(xForward, y);
-
-        if (gridManager.IsValidTile(pos) && gridManager.GetCharacterAt(pos) == null)
-        {
-            moveTiles?.Add(pos);
-        }
-
-        Vector2Int attackPos1 = new Vector2Int(xForward, y + 1);
-        Vector2Int attackPos2 = new Vector2Int(xForward, y - 1);
-        if (gridManager.IsValidTile(attackPos1))
-        {
-            Chessman piece = GetPieceAt(attackPos1);
-            if (piece != null && piece.isEnemy != this.isEnemy)
-            {
-                attackTiles?.Add(attackPos1);
-            }
-        }
-        if (gridManager.IsValidTile(attackPos2))
-        {
-            Chessman piece = GetPieceAt(attackPos2);
-            if (piece != null && piece.isEnemy != this.isEnemy)
-            {
-                attackTiles?.Add(attackPos2);
             }
         }
     }
