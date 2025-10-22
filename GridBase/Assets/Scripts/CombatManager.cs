@@ -16,6 +16,9 @@ public class CombatManager : MonoBehaviour
     [Header("System References")]
     public GridManager gridManager;
 
+    [Header("Turn Order")]
+    public TurnOrderManager turnOrderManager;
+
     [Header("UI References")]
     public TextMeshProUGUI turnText;
     public TextMeshProUGUI messageText;
@@ -91,6 +94,12 @@ public class CombatManager : MonoBehaviour
             musicSource.loop = true;
             musicSource.Play();
         }
+
+        if (turnOrderManager == null)
+        {
+            turnOrderManager = TurnOrderManager.Instance;
+        }
+
     }
 
     IEnumerator SetupTeams()
@@ -117,10 +126,117 @@ public class CombatManager : MonoBehaviour
         }
         Debug.Log($"Csapatok betöltve: {playerTeam.Count} játékos, {enemyTeam.Count} ellenség.");
 
+        if (turnOrderManager != null)
+        {
+            turnOrderManager.InitializeTurnOrder(playerTeam, enemyTeam);
+        }
+
         currentState = CombatState.SelectingCharacter;
         charactersWhoFinishedTurn.Clear();
-        UpdateTurnUI();
-        ShowMessage("Te jössz! Válaszd ki a karaktered!");
+        StartTurnBasedSystem();
+    }
+
+    void StartTurnBasedSystem()
+    {
+        if (turnOrderManager == null) return;
+
+        Chessman currentUnit = turnOrderManager.GetCurrentUnit();
+        if (currentUnit == null)
+        {
+            Debug.LogError("Nincs aktuális bábu!");
+            return;
+        }
+
+        if (currentUnit.isEnemy)
+        {
+            isPlayerTurn = false;
+            UpdateTurnUI();
+            StartCoroutine(ExecuteSingleEnemyTurn(currentUnit));
+        }
+        else
+        {
+            isPlayerTurn = true;
+            UpdateTurnUI();
+            ShowMessage($"A köröd: {currentUnit.characterName}");
+            SelectCharacter(currentUnit);
+        }
+    }
+
+    IEnumerator ExecuteSingleEnemyTurn(Chessman enemyUnit)
+    {
+        ShowMessage($"{enemyUnit.characterName} köre...");
+        yield return new WaitForSeconds(0.75f);
+
+        List<Chessman> alivePlayers = playerTeam.FindAll(p => p != null && p.IsAlive());
+        if (alivePlayers.Count == 0)
+        {
+            CheckGameOver();
+            yield break;
+        }
+
+        HashSet<Vector2Int> possibleAttackTiles = enemyUnit.GetValidAttackTiles();
+        bool attacked = false;
+
+        foreach (Vector2Int attackPos in possibleAttackTiles)
+        {
+            Chessman target = gridManager.GetCharacterAt(attackPos);
+            if (target != null && !target.isEnemy && target.IsAlive())
+            {
+                int distance = CalculateDistance(enemyUnit.gridPosition, target.gridPosition);
+                if (distance <= enemyUnit.attackRange)
+                {
+                    isProcessing = true;
+                    enemyUnit.SetSelected(true);
+                    target.SetHighlight(true);
+                    ShowMessage($"{enemyUnit.characterName} megtámadja {target.characterName}-t!");
+                    yield return new WaitForSeconds(0.5f);
+
+                    if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
+                    yield return enemyUnit.AttackAnimation(target);
+
+                    if (hitSound != null && musicSource != null) musicSource.PlayOneShot(hitSound);
+                    target.SetHighlight(false);
+                    enemyUnit.SetSelected(false);
+                    yield return new WaitForSeconds(0.5f);
+
+                    attacked = true;
+                    break;
+                }
+            }
+        }
+
+        if (!attacked)
+        {
+            HashSet<Vector2Int> possibleMoveTiles = enemyUnit.GetValidMoveTiles();
+            if (possibleMoveTiles.Count > 0)
+            {
+                List<Vector2Int> moveList = new List<Vector2Int>(possibleMoveTiles);
+                int randomIndex = Random.Range(0, moveList.Count);
+                Vector2Int targetTile = moveList[randomIndex];
+
+                isProcessing = true;
+                enemyUnit.SetSelected(true);
+                ShowMessage($"{enemyUnit.characterName} lép.");
+                yield return new WaitForSeconds(0.3f);
+
+                yield return enemyUnit.MoveToTile(targetTile);
+
+                enemyUnit.SetSelected(false);
+                yield return new WaitForSeconds(0.3f);
+            }
+            else
+            {
+                ShowMessage($"{enemyUnit.characterName} várakozik.");
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
+        isProcessing = false;
+
+        if (!CheckGameOver())
+        {
+            EndCurrentTurn();
+        }
     }
 
 
@@ -148,15 +264,18 @@ public class CombatManager : MonoBehaviour
             Collider2D hoverCol = Physics2D.OverlapPoint(wp);
             Chessman hoveredChar = (hoverCol != null) ? hoverCol.GetComponentInParent<Chessman>() : null;
 
-            if (hoveredChar != null && hoveredChar.IsAlive())
-            {
-                if (currentState == CombatState.SelectingCharacter && !hoveredChar.isEnemy && !charactersWhoFinishedTurn.Contains(hoveredChar))
-                    hoveredChar.SetHighlight(true);
-                else if (currentState == CombatState.SelectingTarget && hoveredChar.isEnemy)
-                    hoveredChar.SetHighlight(true);
-                else if (currentState == CombatState.SelectingMoveTile && hoveredChar == selectedAttacker)
-                    hoveredChar.SetHighlight(true);
-            }
+                if (hoveredChar != null && hoveredChar.IsAlive())
+                {
+                    // Only highlight the current unit when selecting a character so players cannot select other friendly units
+                    Chessman currentUnit = (turnOrderManager != null) ? turnOrderManager.GetCurrentUnit() : null;
+
+                    if (currentState == CombatState.SelectingCharacter && currentUnit != null && hoveredChar == currentUnit && !hoveredChar.isEnemy && !charactersWhoFinishedTurn.Contains(hoveredChar))
+                        hoveredChar.SetHighlight(true);
+                    else if (currentState == CombatState.SelectingTarget && hoveredChar.isEnemy)
+                        hoveredChar.SetHighlight(true);
+                    else if (currentState == CombatState.SelectingMoveTile && hoveredChar == selectedAttacker)
+                        hoveredChar.SetHighlight(true);
+                }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -170,7 +289,9 @@ public class CombatManager : MonoBehaviour
             // 1. BÁBU VÁLASZTÁS
             if (currentState == CombatState.SelectingCharacter)
             {
-                if (clickedChar != null && clickedChar.IsAlive() && !clickedChar.isEnemy && !charactersWhoFinishedTurn.Contains(clickedChar))
+                // Only allow selecting the unit whose turn it is (from TurnOrderManager)
+                Chessman currentUnit = (turnOrderManager != null) ? turnOrderManager.GetCurrentUnit() : null;
+                if (clickedChar != null && clickedChar.IsAlive() && !clickedChar.isEnemy && !charactersWhoFinishedTurn.Contains(clickedChar) && clickedChar == currentUnit)
                 {
                     SelectCharacter(clickedChar);
                 }
@@ -408,39 +529,31 @@ public class CombatManager : MonoBehaviour
 
     void CheckPlayerTurnEnd()
     {
-        // Hozzáadjuk a bábut azokhoz, akik már cselekedtek
-        // (Bár az új logikával ez már nem számít, de nem árt)
-        if (selectedAttacker != null && !charactersWhoFinishedTurn.Contains(selectedAttacker))
-        {
-            charactersWhoFinishedTurn.Add(selectedAttacker);
-        }
 
         ClearSelection(); // Töröljük a kiválasztást, jelzőket
         isProcessing = false; // Újra lehet inputot fogadni
 
-        if (CheckGameOver()) return; // Vége a játéknak?
-
-        // JAVÍTÁS:
-        // Azonnal átadjuk a kört az ellenfélnek,
-        // ahelyett, hogy megvárnánk a többi bábut.
-        StartEnemyPhase();
+        if (CheckGameOver()) return;
+        EndCurrentTurn();
     }
+    
+    void EndCurrentTurn()
+    {
+        if (turnOrderManager != null)
+        {
+            turnOrderManager.NextTurn();
+            StartTurnBasedSystem();
+        }
+    }
+
 
     //--------------------------------------------------------------------------
     // Ellenség AI Fázis
     //--------------------------------------------------------------------------
 
-    void StartEnemyPhase()
-    {
-        isPlayerTurn = false;
-        UpdateTurnUI();
-        charactersWhoFinishedTurn.Clear();
-        StartCoroutine(ExecuteEnemyTurn());
-    }
-
     // CSERÉLD LE ERRE A TELJES FÜGGVÉNYT a CombatManager.cs-ben
 
-    IEnumerator ExecuteEnemyTurn()
+    /*IEnumerator ExecuteEnemyTurn()
     {
         ShowMessage("Ellenség köre...");
         yield return new WaitForSeconds(0.75f); // Kicsit több idő az AI gondolkodására
@@ -559,21 +672,12 @@ public class CombatManager : MonoBehaviour
         {
             StartNewPlayerRound();
         }
-    }
+    }*/
 
     //--------------------------------------------------------------------------
     // Segédfüggvények
     //--------------------------------------------------------------------------
 
-    void StartNewPlayerRound()
-    {
-        isPlayerTurn = true;
-        currentState = CombatState.SelectingCharacter;
-        charactersWhoFinishedTurn.Clear();
-        UpdateTurnUI();
-        ShowMessage("Te jössz! Válaszd ki a karaktered!");
-        isProcessing = false;
-    }
 
     void ClearSelection()
     {

@@ -6,16 +6,16 @@ public class GridManager : MonoBehaviour
     public static GridManager Instance { get; private set; }
 
     [Header("Grid Settings")]
-    public int gridWidth = 8; // Sakk méret
-    public int gridHeight = 8; // Sakk méret
-    public float cellSize = 1.1f; // Ezt a régi Chessman.cs-bõl vetted (1.1f)
-    public Vector3 gridOrigin = new Vector3(-3.833333f, -3.833333f, 0); // Ezt is!
+    public int gridWidth = 8;
+    public int gridHeight = 6; 
+    public float cellSize = 1.1f; // Ezt a rï¿½gi Chessman.cs-bï¿½l vetted (1.1f)
+    public Vector3 gridOrigin = new Vector3(-3.833333f, -2.75f, 0);
 
     [Header("Prefabs")]
     public GameObject moveHighlightPrefab;
     public GameObject attackHighlightPrefab;
 
-    // FIGYELEM: Character helyett Chessman-t tárolunk!
+    // FIGYELEM: Character helyett Chessman-t tï¿½rolunk!
     private Dictionary<Vector2Int, Chessman> characterGrid = new Dictionary<Vector2Int, Chessman>();
 
     private List<GameObject> activeHighlights = new List<GameObject>();
@@ -33,39 +33,39 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    // Világ koordinátából rács koordináta
+    // Vilï¿½g koordinï¿½tï¿½bï¿½l rï¿½cs koordinï¿½ta
     public Vector2Int WorldToGrid(Vector3 worldPosition)
     {
-        // A te koordináta-rendszered alapján (a SetCoords-ból)
-        // (X - X_origin) / cella_méret
-        // Használj RoundToInt-et a pontosságért
+        // A te koordinï¿½ta-rendszered alapjï¿½n (a SetCoords-bï¿½l)
+        // (X - X_origin) / cella_mï¿½ret
+        // Hasznï¿½lj RoundToInt-et a pontossï¿½gï¿½rt
         int x = Mathf.RoundToInt((worldPosition.x - gridOrigin.x) / cellSize);
         int y = Mathf.RoundToInt((worldPosition.y - gridOrigin.y) / cellSize);
         return new Vector2Int(x, y);
     }
 
-    // Rács koordinátából világ koordináta
+    // Rï¿½cs koordinï¿½tï¿½bï¿½l vilï¿½g koordinï¿½ta
     public Vector3 GridToWorld(Vector2Int gridPosition)
     {
-        // A te koordináta-rendszered alapján (a SetCoords-ból)
+        // A te koordinï¿½ta-rendszered alapjï¿½n (a SetCoords-bï¿½l)
         float x = (gridPosition.x * cellSize) + gridOrigin.x;
         float y = (gridPosition.y * cellSize) + gridOrigin.y;
 
-        // JAVÍTÁS: A Z érték 0 helyett -0.2, hogy a tábla (Z=0) elõtt legyen
+        // JAVï¿½Tï¿½S: A Z ï¿½rtï¿½k 0 helyett -0.2, hogy a tï¿½bla (Z=0) elï¿½tt legyen
         return new Vector3(x, y, -0.2f);
     }
 
-    // Karakter regisztrálása a rácsra (játék elején)
+    // Karakter regisztrï¿½lï¿½sa a rï¿½csra (jï¿½tï¿½k elejï¿½n)
     public void RegisterCharacter(Vector2Int pos, Chessman character)
     {
         if (characterGrid.ContainsKey(pos))
         {
-            Debug.LogWarning($"A(z) {pos} mezõ már foglalt, de {character.name} megpróbálja elfoglalni.");
+            Debug.LogWarning($"A(z) {pos} mezï¿½ mï¿½r foglalt, de {character.name} megprï¿½bï¿½lja elfoglalni.");
         }
         characterGrid[pos] = character;
     }
 
-    // Karakter mozgatása a rácson
+    // Karakter mozgatï¿½sa a rï¿½cson
     public void MoveCharacter(Vector2Int from, Vector2Int to, Chessman character)
     {
         if (characterGrid.ContainsKey(from))
@@ -83,13 +83,13 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    // Visszaadja, hogy egy mezõ szabad-e
+    // Visszaadja, hogy egy mezï¿½ szabad-e
     public bool IsTileOccupied(Vector2Int pos)
     {
         return characterGrid.ContainsKey(pos) && characterGrid[pos] != null && characterGrid[pos].IsAlive();
     }
 
-    // Visszaadja, hogy ki van a mezõn
+    // Visszaadja, hogy ki van a mezï¿½n
     public Chessman GetCharacterAt(Vector2Int pos)
     {
         if (characterGrid.ContainsKey(pos))
@@ -100,7 +100,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    // Megkeresi az összes elérhetõ mezõt (Breadth-First Search)
+    // Megkeresi az ï¿½sszes elï¿½rhetï¿½ mezï¿½t (Breadth-First Search)
     public HashSet<Vector2Int> FindReachableTiles(Vector2Int start, int range, bool canOccupy = false)
     {
         HashSet<Vector2Int> reachableTiles = new HashSet<Vector2Int>();
@@ -108,7 +108,7 @@ public class GridManager : MonoBehaviour
 
         if (!IsValidTile(start))
         {
-            Debug.LogWarning($"FindReachableTiles: A start pozíció ({start}) érvénytelen!");
+            Debug.LogWarning($"FindReachableTiles: A start pozï¿½ciï¿½ ({start}) ï¿½rvï¿½nytelen!");
             return reachableTiles;
         }
 
@@ -136,7 +136,7 @@ public class GridManager : MonoBehaviour
                 if (!IsValidTile(nextPos)) continue;
                 if (reachableTiles.Contains(nextPos)) continue;
 
-                // Ha nem léphetünk foglalt mezõre, és foglalt
+                // Ha nem lï¿½phetï¿½nk foglalt mezï¿½re, ï¿½s foglalt
                 if (!canOccupy && IsTileOccupied(nextPos)) continue;
 
                 reachableTiles.Add(nextPos);
@@ -151,7 +151,7 @@ public class GridManager : MonoBehaviour
         return pos.x >= 0 && pos.x < gridWidth && pos.y >= 0 && pos.y < gridHeight;
     }
 
-    // --- Jelzõk (Highlights) kezelése ---
+    // --- Jelzï¿½k (Highlights) kezelï¿½se ---
 
     public void ShowMoveTiles(HashSet<Vector2Int> tiles)
     {
@@ -162,8 +162,8 @@ public class GridManager : MonoBehaviour
         {
             Vector3 worldPos = GridToWorld(tile);
 
-            // JAVÍTÁS: A Z érték 1 helyett -0.1
-            // Így a tábla (0) elõtt, de a bábu (-0.2) mögött lesz
+            // JAVï¿½Tï¿½S: A Z ï¿½rtï¿½k 1 helyett -0.1
+            // ï¿½gy a tï¿½bla (0) elï¿½tt, de a bï¿½bu (-0.2) mï¿½gï¿½tt lesz
             worldPos.z = -0.1f;
 
             activeHighlights.Add(Instantiate(moveHighlightPrefab, worldPos, Quaternion.identity));
@@ -179,7 +179,7 @@ public class GridManager : MonoBehaviour
         {
             Vector3 worldPos = GridToWorld(tile);
 
-            // JAVÍTÁS: A Z érték 1 helyett -0.1
+            // JAVï¿½Tï¿½S: A Z ï¿½rtï¿½k 1 helyett -0.1
             worldPos.z = -0.1f;
 
             activeAttackHighlights.Add(Instantiate(attackHighlightPrefab, worldPos, Quaternion.identity));
