@@ -264,15 +264,18 @@ public class CombatManager : MonoBehaviour
             Collider2D hoverCol = Physics2D.OverlapPoint(wp);
             Chessman hoveredChar = (hoverCol != null) ? hoverCol.GetComponentInParent<Chessman>() : null;
 
-            if (hoveredChar != null && hoveredChar.IsAlive())
-            {
-                if (currentState == CombatState.SelectingCharacter && !hoveredChar.isEnemy && !charactersWhoFinishedTurn.Contains(hoveredChar))
-                    hoveredChar.SetHighlight(true);
-                else if (currentState == CombatState.SelectingTarget && hoveredChar.isEnemy)
-                    hoveredChar.SetHighlight(true);
-                else if (currentState == CombatState.SelectingMoveTile && hoveredChar == selectedAttacker)
-                    hoveredChar.SetHighlight(true);
-            }
+                if (hoveredChar != null && hoveredChar.IsAlive())
+                {
+                    // Only highlight the current unit when selecting a character so players cannot select other friendly units
+                    Chessman currentUnit = (turnOrderManager != null) ? turnOrderManager.GetCurrentUnit() : null;
+
+                    if (currentState == CombatState.SelectingCharacter && currentUnit != null && hoveredChar == currentUnit && !hoveredChar.isEnemy && !charactersWhoFinishedTurn.Contains(hoveredChar))
+                        hoveredChar.SetHighlight(true);
+                    else if (currentState == CombatState.SelectingTarget && hoveredChar.isEnemy)
+                        hoveredChar.SetHighlight(true);
+                    else if (currentState == CombatState.SelectingMoveTile && hoveredChar == selectedAttacker)
+                        hoveredChar.SetHighlight(true);
+                }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -286,7 +289,9 @@ public class CombatManager : MonoBehaviour
             // 1. BÁBU VÁLASZTÁS
             if (currentState == CombatState.SelectingCharacter)
             {
-                if (clickedChar != null && clickedChar.IsAlive() && !clickedChar.isEnemy && !charactersWhoFinishedTurn.Contains(clickedChar))
+                // Only allow selecting the unit whose turn it is (from TurnOrderManager)
+                Chessman currentUnit = (turnOrderManager != null) ? turnOrderManager.GetCurrentUnit() : null;
+                if (clickedChar != null && clickedChar.IsAlive() && !clickedChar.isEnemy && !charactersWhoFinishedTurn.Contains(clickedChar) && clickedChar == currentUnit)
                 {
                     SelectCharacter(clickedChar);
                 }
@@ -673,15 +678,6 @@ public class CombatManager : MonoBehaviour
     // Segédfüggvények
     //--------------------------------------------------------------------------
 
-    /*void StartNewPlayerRound()
-    {
-        isPlayerTurn = true;
-        currentState = CombatState.SelectingCharacter;
-        charactersWhoFinishedTurn.Clear();
-        UpdateTurnUI();
-        ShowMessage("Te jössz! Válaszd ki a karaktered!");
-        isProcessing = false;
-    }*/
 
     void ClearSelection()
     {
