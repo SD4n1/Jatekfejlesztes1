@@ -9,15 +9,14 @@ using UnityEngine.UI;
 // AZ ÚJ "CUCC" (ENUM)
 // Ezt a Chessman osztály FÖLÉ, de a fájlba helyezzük.
 // -------------------------------------------------------------------
-public enum PieceType
+// Kasztok: tank, fighter, ranger, healer
+public enum CastType
 {
     None,
-    Pawn,   // Gyalog
-    Rook,   // Bástya
-    Knight, // Huszár
-    Bishop, // Futó
-    Queen,  // Királynő
-    King    // Király
+    Tank,
+    Fighter,
+    Ranger,
+    Healer
 }
 
 
@@ -27,9 +26,9 @@ public enum PieceType
 public class Chessman : MonoBehaviour
 {
     // EZ AZ ÚJ LEGERDÜLŐ MENÜ!
-    [Header("Bábu Típusa")]
-    [Tooltip("Válaszd ki a bábu típusát! Ez határozza meg a lépését és a statjait.")]
-    public PieceType pieceType = PieceType.None;
+    [Header("Bábu Kasztja")]
+    [Tooltip("Válaszd ki a bábu kasztját! Ez határozza meg a mozgását és a statjait.")]
+    public CastType castType = CastType.None;
 
     [Header("Stats")]
     public string characterName;
@@ -49,8 +48,8 @@ public class Chessman : MonoBehaviour
     public List<Ability> abilities;
 
     [Header("Visuals - Sprites")]
-    public Sprite black_queen, black_knight, black_bishop, black_king, black_rook, black_pawn;
-    public Sprite white_queen, white_knight, white_bishop, white_king, white_rook, white_pawn;
+    public Sprite black_tank, black_fighter, black_ranger, black_healer;
+    public Sprite white_tank, white_fighter, white_ranger, white_healer;
 
     [Header("Visuals - UI (Opcionális)")]
     public GameObject selectionFrame;
@@ -113,72 +112,55 @@ public class Chessman : MonoBehaviour
         int defaultAttack = 1;
 
         // 1. Sprite beállítása a TÍPUS és SZÍN alapján
-        switch (this.pieceType)
+        switch (this.castType)
         {
-            case PieceType.Queen:
-                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_queen : white_queen;
+            case CastType.Tank:
+                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_tank : white_tank;
                 break;
-            case PieceType.Knight:
-                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_knight : white_knight;
+            case CastType.Fighter:
+                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_fighter : white_fighter;
                 break;
-            case PieceType.Bishop:
-                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_bishop : white_bishop;
+            case CastType.Ranger:
+                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_ranger : white_ranger;
                 break;
-            case PieceType.King:
-                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_king : white_king;
+            case CastType.Healer:
+                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_healer : white_healer;
                 break;
-            case PieceType.Rook:
-                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_rook : white_rook;
-                break;
-            case PieceType.Pawn:
-                this.GetComponent<SpriteRenderer>().sprite = isEnemy ? black_pawn : white_pawn;
-                break;
-            case PieceType.None:
-                // Üresen hagyjuk, vagy adjunk neki egy alap sprite-ot?
+            case CastType.None:
+            default:
+                // leave sprite as-is
                 break;
         }
 
         // 2. Statok beállítása: Csak akkor állít be defaultot, ha az Inspectorban 0 van
-        switch (this.pieceType)
+        switch (this.castType)
         {
-            case PieceType.Queen:
+            case CastType.Tank:
+                if (maxHealth <= 0) maxHealth = 15;
+                if (attackPower <= 0) attackPower = 3;
+                if (moveRange <= 0) moveRange = 3;
+                if (attackRange <= 0) attackRange = 1;
+                break;
+            case CastType.Fighter:
                 if (maxHealth <= 0) maxHealth = 8;
                 if (attackPower <= 0) attackPower = 4;
-                if (moveRange <= 0) moveRange = 6;
+                if (moveRange <= 0) moveRange = 4;
                 if (attackRange <= 0) attackRange = 1;
                 break;
-            case PieceType.Knight:
-                if (maxHealth <= 0) maxHealth = 5;
+            case CastType.Ranger:
+                if (maxHealth <= 0) maxHealth = 6;
                 if (attackPower <= 0) attackPower = 3;
-                if (moveRange <= 0) moveRange = 3; // Lépés-szabály miatt ez csak a keresés határa
-                if (attackRange <= 0) attackRange = 1;
+                if (moveRange <= 0) moveRange = 4;
+                if (attackRange <= 0) attackRange = 3;
                 break;
-            case PieceType.Bishop:
-                if (maxHealth <= 0) maxHealth = 5;
-                if (attackPower <= 0) attackPower = 2;
-                if (moveRange <= 0) moveRange = 5;
-                if (attackRange <= 0) attackRange = 1;
-                break;
-            case PieceType.King:
-                if (maxHealth <= 0) maxHealth = 12;
-                if (attackPower <= 0) attackPower = 3;
-                if (moveRange <= 0) moveRange = 1; // Sakkban a király csak 1-et lép
-                if (attackRange <= 0) attackRange = 1;
-                break;
-            case PieceType.Rook:
+            case CastType.Healer:
                 if (maxHealth <= 0) maxHealth = 7;
-                if (attackPower <= 0) attackPower = 3;
-                if (moveRange <= 0) moveRange = 5;
-                if (attackRange <= 0) attackRange = 1;
-                break;
-            case PieceType.Pawn:
-                if (maxHealth <= 0) maxHealth = 3;
                 if (attackPower <= 0) attackPower = 1;
-                if (moveRange <= 0) moveRange = 1; // Alapból 1-et lép (a 2-es kezdőlépést külön kell kezelni)
+                if (moveRange <= 0) moveRange = 4;
                 if (attackRange <= 0) attackRange = 1;
                 break;
 
-            case PieceType.None:
+            case CastType.None:
             default:
                 if (maxHealth <= 0) maxHealth = defaultHealth;
                 if (attackPower <= 0) attackPower = defaultDamage;
@@ -299,15 +281,16 @@ public class Chessman : MonoBehaviour
         return gridManager.GetCharacterAt(pos);
     }
 
-    // JAVÍTVA: Most már a 'pieceType' (enum) alapján működik
+        // JAVÍTVA: Most már a 'castType' (enum) alapján működik
     public HashSet<Vector2Int> GetValidMoveTiles()
     {
         HashSet<Vector2Int> tiles = new HashSet<Vector2Int>();
 
-        // A 'this.name' helyett az új 'pieceType'-ot használjuk
-        switch (this.pieceType)
+        // A 'this.name' helyett az új 'castType'-ot használjuk
+        switch (this.castType)
         {
-            case PieceType.Queen:
+            case CastType.Ranger:
+                // Ranged: moves in lines (like queen) to represent range
                 LineMove(tiles, null, 1, 0);
                 LineMove(tiles, null, 0, 1);
                 LineMove(tiles, null, 1, 1);
@@ -317,28 +300,17 @@ public class Chessman : MonoBehaviour
                 LineMove(tiles, null, -1, 1);
                 LineMove(tiles, null, 1, -1);
                 break;
-            case PieceType.Knight:
+            case CastType.Fighter:
+                // Fighter: agile melee - use knight-like L move
                 LMove(tiles, null);
                 break;
-            case PieceType.Bishop:
-                LineMove(tiles, null, 1, 1);
-                LineMove(tiles, null, 1, -1);
-                LineMove(tiles, null, -1, 1);
-                LineMove(tiles, null, -1, -1);
-                break;
-            case PieceType.King:
+            case CastType.Tank:
+                // Tank: slow melee - adjacent tiles
                 SurroundMove(tiles, null);
                 break;
-            case PieceType.Rook:
-                LineMove(tiles, null, 1, 0);
-                LineMove(tiles, null, 0, 1);
-                LineMove(tiles, null, -1, 0);
-                LineMove(tiles, null, 0, -1);
-                break;
-            case PieceType.Pawn:
-                // Az 'isEnemy' (fekete) a -X, a 'fehér' a +X irányba mozog
-                // (Feltéve, hogy a fekete a 7-es, a fehér a 0-s oszlopon indul)
-                PawnMove(tiles, null, gridPosition.x + (isEnemy ? -1 : 1), gridPosition.y);
+            case CastType.Healer:
+                // Healer: support unit - adjacent movement
+                SurroundMove(tiles, null);
                 break;
         }
         return tiles;
@@ -349,9 +321,9 @@ public class Chessman : MonoBehaviour
     {
         HashSet<Vector2Int> tiles = new HashSet<Vector2Int>();
 
-        switch (this.pieceType)
+        switch (this.castType)
         {
-            case PieceType.Queen:
+            case CastType.Ranger:
                 LineMove(null, tiles, 1, 0);
                 LineMove(null, tiles, 0, 1);
                 LineMove(null, tiles, 1, 1);
@@ -361,26 +333,14 @@ public class Chessman : MonoBehaviour
                 LineMove(null, tiles, -1, 1);
                 LineMove(null, tiles, 1, -1);
                 break;
-            case PieceType.Knight:
+            case CastType.Fighter:
                 LMove(null, tiles);
                 break;
-            case PieceType.Bishop:
-                LineMove(null, tiles, 1, 1);
-                LineMove(null, tiles, 1, -1);
-                LineMove(null, tiles, -1, 1);
-                LineMove(null, tiles, -1, -1);
-                break;
-            case PieceType.King:
+            case CastType.Tank:
                 SurroundMove(null, tiles);
                 break;
-            case PieceType.Rook:
-                LineMove(null, tiles, 1, 0);
-                LineMove(null, tiles, 0, 1);
-                LineMove(null, tiles, -1, 0);
-                LineMove(null, tiles, 0, -1);
-                break;
-            case PieceType.Pawn:
-                PawnMove(null, tiles, gridPosition.x + (isEnemy ? -1 : 1), gridPosition.y);
+            case CastType.Healer:
+                SurroundMove(null, tiles);
                 break;
         }
         return tiles;
