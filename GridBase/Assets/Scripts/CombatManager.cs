@@ -1,0 +1,712 @@
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro; // Szükséges a TextMeshPro-hoz
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement; // Szükséges az újraindításhoz
+
+public class CombatManager : MonoBehaviour
+{
+    #region Variables
+
+    [Header("Teams")]
+    public List<Chessman> playerTeam = new List<Chessman>();
+    public List<Chessman> enemyTeam = new List<Chessman>();
+
+    [Header("System References")]
+    public GridManager gridManager;
+
+    [Header("UI References")]
+    public TextMeshProUGUI turnText;
+    public TextMeshProUGUI messageText;
+    public GameObject victoryPanel;
+    public GameObject defeatPanel;
+
+    [Header("Action UI")]
+    public GameObject actionPanel;
+    public Button attackButton;
+    public Button abilityButton1;
+    public Button waitButton;
+
+    [Header("Audio")]
+    public AudioSource musicSource;
+    public AudioClip combatMusic;
+    public AudioClip attackSound;
+    public AudioClip hitSound;
+
+    // Private state variables
+    private Chessman selectedAttacker;
+    private Chessman selectedTarget;
+    private bool isPlayerTurn = true;
+    private bool isProcessing = false;
+    private CombatState currentState;
+
+    private HashSet<Vector2Int> reachableTiles;
+    private HashSet<Vector2Int> attackRangeTiles;
+    private bool characterHasActed;
+    private Ability selectedAbility;
+
+    private HashSet<Chessman> charactersWhoFinishedTurn = new HashSet<Chessman>();
+
+    private enum CombatState
+    {
+        SelectingCharacter,
+        CharacterSelected,
+        SelectingMoveTile,
+        MovingCharacter,
+        SelectingTarget,
+        Processing,
+        GameOver
+    }
+
+    #endregion
+
+    //--------------------------------------------------------------------------
+    // Indítás és kör menedzsment
+    //--------------------------------------------------------------------------
+
+    void Start()
+    {
+        if (actionPanel != null) actionPanel.SetActive(false);
+        if (attackButton != null) attackButton.onClick.AddListener(OnPrepareAttack);
+        if (waitButton != null) waitButton.onClick.AddListener(OnWait);
+
+        if (victoryPanel != null) victoryPanel.SetActive(false);
+        if (defeatPanel != null) defeatPanel.SetActive(false);
+
+        if (gridManager == null)
+        {
+            gridManager = GridManager.Instance;
+            if (gridManager == null) Debug.LogError("Nincs GridManager a jelenetben!");
+        }
+
+        playerTeam.Clear();
+        enemyTeam.Clear();
+
+        StartCoroutine(SetupTeams());
+
+        if (musicSource != null && combatMusic != null)
+        {
+            musicSource.clip = combatMusic;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
+    }
+
+    IEnumerator SetupTeams()
+    {
+        yield return null; // Várunk egy frame-et, hogy minden Chessman.Start() lefusson
+
+        // === EZ A SOR VÁLTOZOTT ===
+        // A régi "FindObjectsOfType<Chessman>()" helyett az újat használjuk
+        Chessman[] allPieces = FindObjectsByType<Chessman>(FindObjectsSortMode.None);
+        // === EDDIG TART A VÁLTOZÁS ===
+
+        foreach (Chessman piece in allPieces)
+        {
+            if (piece == null) continue;
+
+            if (piece.isEnemy)
+            {
+                enemyTeam.Add(piece);
+            }
+            else
+            {
+                playerTeam.Add(piece);
+            }
+        }
+        Debug.Log($"Csapatok betöltve: {playerTeam.Count} játékos, {enemyTeam.Count} ellenség.");
+
+        currentState = CombatState.SelectingCharacter;
+        charactersWhoFinishedTurn.Clear();
+        UpdateTurnUI();
+        ShowMessage("Te jössz! Válaszd ki a karaktered!");
+    }
+
+
+    void Update()
+    {
+        if (!isPlayerTurn || isProcessing || currentState == CombatState.GameOver) return;
+        HandlePlayerInput();
+    }
+
+    //--------------------------------------------------------------------------
+    // Játékos Input Kezelése
+    //--------------------------------------------------------------------------
+
+    void HandlePlayerInput()
+    {
+        Vector3 mp = Input.mousePosition;
+        mp.z = -Camera.main.transform.position.z;
+        Vector3 wp3 = Camera.main.ScreenToWorldPoint(mp);
+        Vector2 wp = new Vector2(wp3.x, wp3.y);
+
+        ClearAllHighlights();
+
+        if (UnityEngine.EventSystems.EventSystem.current != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            Collider2D hoverCol = Physics2D.OverlapPoint(wp);
+            Chessman hoveredChar = (hoverCol != null) ? hoverCol.GetComponentInParent<Chessman>() : null;
+
+            if (hoveredChar != null && hoveredChar.IsAlive())
+            {
+                if (currentState == CombatState.SelectingCharacter && !hoveredChar.isEnemy && !charactersWhoFinishedTurn.Contains(hoveredChar))
+                    hoveredChar.SetHighlight(true);
+                else if (currentState == CombatState.SelectingTarget && hoveredChar.isEnemy)
+                    hoveredChar.SetHighlight(true);
+                else if (currentState == CombatState.SelectingMoveTile && hoveredChar == selectedAttacker)
+                    hoveredChar.SetHighlight(true);
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (UnityEngine.EventSystems.EventSystem.current != null && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
+
+            Collider2D col = Physics2D.OverlapPoint(wp);
+            Chessman clickedChar = (col != null) ? col.GetComponentInParent<Chessman>() : null;
+            Vector2Int gridPos = gridManager.WorldToGrid(wp3);
+
+            // 1. BÁBU VÁLASZTÁS
+            if (currentState == CombatState.SelectingCharacter)
+            {
+                if (clickedChar != null && clickedChar.IsAlive() && !clickedChar.isEnemy && !charactersWhoFinishedTurn.Contains(clickedChar))
+                {
+                    SelectCharacter(clickedChar);
+                }
+            }
+            // 2. LÉPÉS-HELY VÁLASZTÁS
+            else if (currentState == CombatState.SelectingMoveTile)
+            {
+                if (reachableTiles != null && reachableTiles.Contains(gridPos) && !gridManager.IsTileOccupied(gridPos))
+                {
+                    StartCoroutine(MoveCharacter(gridPos));
+                }
+                else if (clickedChar == selectedAttacker)
+                {
+                    ShowActionUI();
+                }
+                else
+                {
+                    ClearSelection();
+                    currentState = CombatState.SelectingCharacter;
+                }
+            }
+            // 3. CÉLPONT VÁLASZTÁS
+            else if (currentState == CombatState.SelectingTarget)
+            {
+                if (clickedChar == null)
+                {
+                    gridManager.ClearAttackTiles();
+                    ShowActionUI();
+                    return;
+                }
+                if (!clickedChar.isEnemy || !clickedChar.IsAlive())
+                {
+                    ShowMessage("Őt nem támadhatod meg!");
+                    return;
+                }
+
+                int distance = CalculateDistance(selectedAttacker.gridPosition, clickedChar.gridPosition);
+                int currentAttackRange = (selectedAbility != null) ? selectedAbility.range : selectedAttacker.attackRange;
+
+                if (distance <= currentAttackRange)
+                {
+                    SelectTarget(clickedChar);
+                }
+                else
+                {
+                    ShowMessage("Nincs elég közel a támadáshoz!");
+                }
+            }
+            // 4. AKCIÓ MENÜ
+            else if (currentState == CombatState.CharacterSelected)
+            {
+                if (clickedChar == null || clickedChar != selectedAttacker)
+                {
+                    ClearSelection();
+                    currentState = CombatState.SelectingCharacter;
+                }
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    // Játékos Akciók
+    //--------------------------------------------------------------------------
+
+    void SelectCharacter(Chessman character)
+    {
+        ClearSelection();
+        selectedAttacker = character;
+        selectedAttacker.SetSelected(true);
+        characterHasActed = false;
+        ShowMoveOptions();
+    }
+
+    void ShowMoveOptions()
+    {
+        currentState = CombatState.SelectingMoveTile;
+        if (gridManager != null && selectedAttacker != null)
+        {
+            reachableTiles = selectedAttacker.GetValidMoveTiles();
+            gridManager.ShowMoveTiles(reachableTiles);
+        }
+        ShowMessage("Lépj egy mezőre, vagy kattints a bábudra az akcióhoz.");
+    }
+
+    IEnumerator MoveCharacter(Vector2Int targetTile)
+    {
+        isProcessing = true;
+        currentState = CombatState.MovingCharacter;
+        gridManager.ClearMoveTiles();
+        yield return selectedAttacker.MoveToTile(targetTile);
+        isProcessing = false;
+        ShowActionUI();
+    }
+
+    void ShowActionUI()
+    {
+        currentState = CombatState.CharacterSelected;
+        gridManager.ClearMoveTiles();
+
+        if (characterHasActed)
+        {
+            OnWait();
+            return;
+        }
+
+        if (actionPanel != null) actionPanel.SetActive(true);
+
+        if (attackButton != null) attackButton.interactable = !characterHasActed;
+
+        if (abilityButton1 != null)
+        {
+            bool canUseAbility = !characterHasActed && selectedAttacker != null && selectedAttacker.abilities.Count > 0;
+            abilityButton1.gameObject.SetActive(canUseAbility);
+            if (canUseAbility)
+            {
+                var buttonText = abilityButton1.GetComponentInChildren<TextMeshProUGUI>();
+                if (buttonText != null) buttonText.text = selectedAttacker.abilities[0].abilityName;
+                abilityButton1.onClick.RemoveAllListeners();
+                abilityButton1.onClick.AddListener(() => OnPrepareAbility(selectedAttacker.abilities[0]));
+            }
+        }
+
+        if (waitButton != null) waitButton.interactable = !characterHasActed;
+
+        ShowMessage("Válassz akciót!");
+    }
+
+    void HideActionUI()
+    {
+        if (actionPanel != null) actionPanel.SetActive(false);
+    }
+
+    void OnPrepareAttack()
+    {
+        if (characterHasActed) return;
+
+        selectedAbility = null;
+        HideActionUI();
+        if (gridManager != null && selectedAttacker != null)
+        {
+            attackRangeTiles = selectedAttacker.GetValidAttackTiles();
+            gridManager.ShowAttackTiles(attackRangeTiles);
+        }
+        currentState = CombatState.SelectingTarget;
+        ShowMessage("Válaszd ki a célpontot!");
+    }
+
+    void OnPrepareAbility(Ability ability)
+    {
+        if (characterHasActed) return;
+
+        selectedAbility = ability;
+        HideActionUI();
+        if (gridManager != null && selectedAttacker != null)
+        {
+            Debug.Log($"KÉPESSÉG ELŐKÉSZÍTÉS: Bábu={selectedAttacker.characterName}, Képesség={ability.abilityName}, Hatótáv={ability.range}");
+            attackRangeTiles = gridManager.FindReachableTiles(selectedAttacker.gridPosition, ability.range, true);
+            gridManager.ShowAttackTiles(attackRangeTiles);
+        }
+        else
+        {
+            Debug.LogError("Hiba az OnPrepareAbility során: gridManager vagy selectedAttacker hiányzik!");
+        }
+        currentState = CombatState.SelectingTarget;
+        ShowMessage($"Válaszd ki a célpontot: {ability.abilityName}");
+    }
+
+    void OnWait()
+    {
+        if (characterHasActed) return;
+        HideActionUI();
+        StartCoroutine(ExecuteWait());
+    }
+
+    void SelectTarget(Chessman target)
+    {
+        selectedTarget = target;
+        gridManager.ClearAttackTiles();
+
+        if (selectedAbility != null)
+        {
+            StartCoroutine(ExecutePlayerAbility(selectedAbility, target));
+        }
+        else
+        {
+            StartCoroutine(ExecutePlayerAttack());
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    // Játékos Akció Coroutine-ok (Animációk)
+    //--------------------------------------------------------------------------
+
+    IEnumerator ExecuteWait()
+    {
+        isProcessing = true;
+        currentState = CombatState.Processing;
+        characterHasActed = true;
+        ShowMessage($"{selectedAttacker.characterName} várakozik.");
+        yield return new WaitForSeconds(0.5f);
+        CheckPlayerTurnEnd();
+    }
+
+    IEnumerator ExecutePlayerAttack()
+    {
+        isProcessing = true;
+        currentState = CombatState.Processing;
+        characterHasActed = true;
+        ShowMessage($"{selectedAttacker.characterName} megtámadja {selectedTarget.characterName}-t!");
+        if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
+
+        yield return selectedAttacker.AttackAnimation(selectedTarget);
+
+        if (hitSound != null && musicSource != null) musicSource.PlayOneShot(hitSound);
+
+        CheckPlayerTurnEnd();
+    }
+
+    IEnumerator ExecutePlayerAbility(Ability ability, Chessman target)
+    {
+        isProcessing = true;
+        currentState = CombatState.Processing;
+        characterHasActed = true;
+        ShowMessage($"{selectedAttacker.characterName} használja: {ability.abilityName}!");
+        yield return new WaitForSeconds(0.5f);
+
+        bool success = ability.Activate(selectedAttacker, target);
+
+        if (!success) ShowMessage("Sikertelen képesség!");
+        yield return new WaitForSeconds(0.5f);
+        CheckPlayerTurnEnd();
+    }
+
+    // CSERÉLD LE ERRE A TELJES FÜGGVÉNYT a CombatManager.cs-ben
+
+    void CheckPlayerTurnEnd()
+    {
+        // Hozzáadjuk a bábut azokhoz, akik már cselekedtek
+        // (Bár az új logikával ez már nem számít, de nem árt)
+        if (selectedAttacker != null && !charactersWhoFinishedTurn.Contains(selectedAttacker))
+        {
+            charactersWhoFinishedTurn.Add(selectedAttacker);
+        }
+
+        ClearSelection(); // Töröljük a kiválasztást, jelzőket
+        isProcessing = false; // Újra lehet inputot fogadni
+
+        if (CheckGameOver()) return; // Vége a játéknak?
+
+        // JAVÍTÁS:
+        // Azonnal átadjuk a kört az ellenfélnek,
+        // ahelyett, hogy megvárnánk a többi bábut.
+        StartEnemyPhase();
+    }
+
+    //--------------------------------------------------------------------------
+    // Ellenség AI Fázis
+    //--------------------------------------------------------------------------
+
+    void StartEnemyPhase()
+    {
+        isPlayerTurn = false;
+        UpdateTurnUI();
+        charactersWhoFinishedTurn.Clear();
+        StartCoroutine(ExecuteEnemyTurn());
+    }
+
+    // CSERÉLD LE ERRE A TELJES FÜGGVÉNYT a CombatManager.cs-ben
+
+    IEnumerator ExecuteEnemyTurn()
+    {
+        ShowMessage("Ellenség köre...");
+        yield return new WaitForSeconds(0.75f); // Kicsit több idő az AI gondolkodására
+
+        // Összegyűjtjük az élőket
+        List<Chessman> aliveEnemies = enemyTeam.FindAll(e => e != null && e.IsAlive());
+        List<Chessman> alivePlayers = playerTeam.FindAll(p => p != null && p.IsAlive());
+
+        // Ha nincs ellenség vagy játékos, vége
+        if (aliveEnemies.Count == 0 || alivePlayers.Count == 0)
+        {
+            if (!CheckGameOver()) { StartNewPlayerRound(); }
+            yield break;
+        }
+
+        // === ÚJ AI LOGIKA: Csak EGY bábuval lép ===
+        bool actionTaken = false; // Jelzi, hogy léptünk-e már
+
+        // 1. Prioritás: Támadás, ha lehet
+        // 1. Prioritás: Támadás, ha lehet
+        foreach (var enemyAttacker in aliveEnemies)
+        {
+            // Lekérjük a sakk-szabályok szerinti támadható mezőket
+            HashSet<Vector2Int> possibleAttackTiles = enemyAttacker.GetValidAttackTiles();
+
+            foreach (Vector2Int attackPos in possibleAttackTiles)
+            {
+                Chessman target = gridManager.GetCharacterAt(attackPos);
+                // Ha a célponton van élő játékos
+                if (target != null && !target.isEnemy && target.IsAlive())
+                {
+                    // === ÚJ SOR: TÁVOLSÁG ELLENŐRZÉSE ===
+                    int distance = CalculateDistance(enemyAttacker.gridPosition, target.gridPosition);
+                    if (distance <= enemyAttacker.attackRange)
+                    // === ÚJ SOR VÉGE ===
+                    {
+                        // === AKCIÓ: TÁMADÁS ===
+                        isProcessing = true;
+                        enemyAttacker.SetSelected(true);
+                        target.SetHighlight(true);
+                        ShowMessage($"{enemyAttacker.characterName} megtámadja {target.characterName}-t!");
+                        yield return new WaitForSeconds(0.5f);
+
+                        if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
+                        yield return enemyAttacker.AttackAnimation(target); // Chessman támadás animációja
+
+                        if (hitSound != null && musicSource != null) musicSource.PlayOneShot(hitSound);
+                        target.SetHighlight(false);
+                        enemyAttacker.SetSelected(false);
+                        yield return new WaitForSeconds(0.5f);
+
+                        actionTaken = true; // LÉPTÜNK!
+                        goto EndEnemyTurn; // Ugrás a kör végére
+                        // === TÁMADÁS VÉGE ===
+                    } // <- Bezárjuk az új 'if'-et
+                }
+            }
+            //if (actionTaken) break; // Ezt a sort akár ki is veheted, a goto miatt már nem kell
+        } // End Foreach Enemy (Attack Check)
+
+        // 2. Ha nem tudtunk támadni: Mozgás (az első bábuval, amelyik tud)
+        if (!actionTaken)
+        {
+            foreach (var enemyAttacker in aliveEnemies)
+            {
+                // Lekérjük a sakk-szabályok szerinti léphető mezőket
+                HashSet<Vector2Int> possibleMoveTiles = enemyAttacker.GetValidMoveTiles();
+
+                if (possibleMoveTiles.Count > 0)
+                {
+                    // === JAVÍTÁS: Véletlenszerű lépés választása ===
+                    // 1. Átalakítjuk a HashSet-et listává, hogy indexelni tudjuk
+                    List<Vector2Int> moveList = new List<Vector2Int>(possibleMoveTiles);
+
+                    // 2. Választunk egy véletlen indexet a lista méretén belül
+                    int randomIndex = Random.Range(0, moveList.Count);
+
+                    // 3. Kiválasztjuk a véletlen célmezőt
+                    Vector2Int targetTile = moveList[randomIndex];
+                    // === JAVÍTÁS VÉGE ===
+
+
+                    // === AKCIÓ: MOZGÁS ===
+                    isProcessing = true;
+                    enemyAttacker.SetSelected(true);
+                    ShowMessage($"{enemyAttacker.characterName} lép ide: {targetTile}."); // Kiírjuk a célmezőt is
+                    yield return new WaitForSeconds(0.3f);
+
+                    yield return enemyAttacker.MoveToTile(targetTile); // Chessman mozgás animációja
+
+                    enemyAttacker.SetSelected(false);
+                    yield return new WaitForSeconds(0.3f);
+
+                    actionTaken = true; // LÉPTÜNK!
+                    goto EndEnemyTurn; // Ugrás a kör végére
+                    // === MOZGÁS VÉGE ===
+                }
+            }
+        }
+
+        // 3. Ha sem támadni, sem mozogni nem tudott senki: Várakozás
+        if (!actionTaken)
+        {
+            ShowMessage("Az ellenség nem tud lépni, várakozik.");
+            yield return new WaitForSeconds(0.5f);
+            actionTaken = true; // A várakozás is egy akció
+        }
+
+    // === CÍMKE A KÖR VÉGÉNEK ===
+    EndEnemyTurn:
+
+        isProcessing = false; // AI befejezte erre a körre
+
+        // Ha nincs vége a játéknak, jön a játékos
+        if (!CheckGameOver())
+        {
+            StartNewPlayerRound();
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    // Segédfüggvények
+    //--------------------------------------------------------------------------
+
+    void StartNewPlayerRound()
+    {
+        isPlayerTurn = true;
+        currentState = CombatState.SelectingCharacter;
+        charactersWhoFinishedTurn.Clear();
+        UpdateTurnUI();
+        ShowMessage("Te jössz! Válaszd ki a karaktered!");
+        isProcessing = false;
+    }
+
+    void ClearSelection()
+    {
+        HideActionUI();
+        if (gridManager != null)
+        {
+            gridManager.ClearMoveTiles();
+            gridManager.ClearAttackTiles();
+        }
+
+        if (selectedAttacker != null) selectedAttacker.SetSelected(false);
+
+        selectedTarget = null;
+        selectedAbility = null;
+        reachableTiles?.Clear();
+        attackRangeTiles?.Clear();
+    }
+
+    void ClearAllHighlights()
+    {
+        var allChars = new List<Chessman>(playerTeam);
+        allChars.AddRange(enemyTeam);
+        foreach (var character in allChars)
+        {
+            if (character != null && character != selectedAttacker)
+            {
+                character.SetHighlight(false);
+            }
+        }
+    }
+
+    bool CheckGameOver()
+    {
+        bool allPlayersDead = playerTeam.TrueForAll(p => p == null || !p.IsAlive());
+        bool allEnemiesDead = enemyTeam.TrueForAll(e => e == null || !e.IsAlive());
+
+        if (allPlayersDead || allEnemiesDead)
+        {
+            currentState = CombatState.GameOver;
+            ShowMessage(allPlayersDead ? "VERESÉG!" : "GYŐZELEM!");
+            if (allPlayersDead && defeatPanel != null) defeatPanel.SetActive(true);
+            if (allEnemiesDead && victoryPanel != null) victoryPanel.SetActive(true);
+            isProcessing = true;
+            return true;
+        }
+        return false;
+    }
+
+    void UpdateTurnUI()
+    {
+        if (turnText != null)
+        {
+            turnText.text = isPlayerTurn ? "JÁTÉKOS KÖRE" : "ELLENSÉG KÖRE";
+            turnText.color = isPlayerTurn ? new Color(0.2f, 1f, 0.2f) : new Color(1f, 0.2f, 0.2f);
+        }
+    }
+
+    void ShowMessage(string message)
+    {
+        if (messageText != null) messageText.text = message;
+    }
+
+    public void RestartBattle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    int CalculateDistance(Vector2Int posA, Vector2Int posB)
+    {
+        return Mathf.Abs(posA.x - posB.x) + Mathf.Abs(posA.y - posB.y);
+    }
+
+    Chessman FindClosestPlayer(Chessman attacker, List<Chessman> alivePlayers)
+    {
+        Chessman closest = null;
+        int minDistance = int.MaxValue;
+        foreach (var player in alivePlayers)
+        {
+            if (player == null || !player.IsAlive()) continue;
+
+            int distance = CalculateDistance(attacker.gridPosition, player.gridPosition);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closest = player;
+            }
+        }
+        return closest;
+    }
+
+    Vector2Int? FindPathStep(Vector2Int start, Vector2Int target, int maxMove)
+    {
+        if (gridManager == null || start == target || maxMove <= 0) return null;
+
+        int dx = target.x - start.x;
+        int dy = target.y - start.y;
+        Vector2Int firstStep = start;
+
+        if (Mathf.Abs(dx) > Mathf.Abs(dy))
+        {
+            firstStep.x += (int)Mathf.Sign(dx);
+        }
+        else if (Mathf.Abs(dy) > 0)
+        {
+            firstStep.y += (int)Mathf.Sign(dy);
+        }
+        else
+        {
+            return null;
+        }
+
+        if (gridManager.IsValidTile(firstStep) && !gridManager.IsTileOccupied(firstStep))
+        {
+            return firstStep;
+        }
+
+        if (Mathf.Abs(dx) <= Mathf.Abs(dy) && Mathf.Abs(dx) > 0)
+        {
+            firstStep = start;
+            firstStep.x += (int)Mathf.Sign(dx);
+        }
+        else if (Mathf.Abs(dx) > Mathf.Abs(dy) && Mathf.Abs(dy) > 0)
+        {
+            firstStep = start;
+            firstStep.y += (int)Mathf.Sign(dy);
+        }
+
+        if (firstStep != start && gridManager.IsValidTile(firstStep) && !gridManager.IsTileOccupied(firstStep))
+        {
+            return firstStep;
+        }
+
+        return null;
+    }
+}
