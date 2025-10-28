@@ -8,6 +8,7 @@ public abstract class BaseCharacter
     public int AttackPower { get; protected set; }
     public int MoveRange { get; protected set; }
     public int AttackRange { get; protected set; }
+    public List<Ability> Abilities { get; protected set; } = new List<Ability>();
 
     public Sprite Sprite { get; protected set; }
 
