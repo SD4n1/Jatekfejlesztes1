@@ -37,26 +37,23 @@ public class TurnOrderManager : MonoBehaviour
         turnOrder.Clear();
         currentTurnIndex = 0;
 
-        List<Chessman> allUnits = new List<Chessman>();
-        allUnits.AddRange(playerTeam);
-        allUnits.AddRange(enemyTeam);
-
-        allUnits = allUnits.FindAll(unit => unit != null && unit.IsAlive());
+        List<Chessman> alivePlayers = playerTeam.FindAll(unit => unit != null && unit.IsAlive());
+        List<Chessman> aliveEnemies = enemyTeam.FindAll(unit => unit != null && unit.IsAlive());
 
         int playerIndex = 0;
         int enemyIndex = 0;
 
-        while (playerIndex < playerTeam.Count || enemyIndex < enemyTeam.Count)
+        while (playerIndex < alivePlayers.Count || enemyIndex < aliveEnemies.Count)
         {
-            if (playerIndex < playerTeam.Count && playerTeam[playerIndex] != null && playerTeam[playerIndex].IsAlive())
+            if (playerIndex < alivePlayers.Count)
             {
-                turnOrder.Add(playerTeam[playerIndex]);
+                turnOrder.Add(alivePlayers[playerIndex]);
                 playerIndex++;
             }
 
-            if (enemyIndex < enemyTeam.Count && enemyTeam[enemyIndex] != null && enemyTeam[enemyIndex].IsAlive())
+            if (enemyIndex < aliveEnemies.Count)
             {
-                turnOrder.Add(enemyTeam[enemyIndex]);
+                turnOrder.Add(aliveEnemies[enemyIndex]);
                 enemyIndex++;
             }
         }
@@ -67,30 +64,25 @@ public class TurnOrderManager : MonoBehaviour
 
     public Chessman GetCurrentUnit()
     {
-        if (turnOrder.Count == 0) return null;
+        turnOrder.RemoveAll(unit => unit == null || !unit.IsAlive());
 
-        while (currentTurnIndex < turnOrder.Count)
+        if (turnOrder.Count == 0)
         {
-            Chessman current = turnOrder[currentTurnIndex];
-            if (current != null && current.IsAlive())
-            {
-                return current;
-            }
-            currentTurnIndex++;
+            Debug.LogWarning("Nincs több élő bábu a körsorrendben!");
+            return null;
         }
 
-        return null;
+        if (currentTurnIndex >= turnOrder.Count)
+        {
+            currentTurnIndex = 0;
+        }
+
+        return turnOrder[currentTurnIndex];
     }
 
     public void NextTurn()
     {
         currentTurnIndex++;
-
-        if (currentTurnIndex >= turnOrder.Count)
-        {
-            currentTurnIndex = 0;
-            RefreshTurnOrder();
-        }
 
         UpdateTurnOrderUI();
     }
@@ -137,7 +129,7 @@ public class TurnOrderManager : MonoBehaviour
             if (textComponent != null)
             {
                 string prefix = unit.isEnemy ? "[E] " : "[J] ";
-                textComponent.text = prefix + unit.characterName;
+                textComponent.text = prefix + unit.GetName();
 
                 if (i == 0)
                 {

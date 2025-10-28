@@ -47,7 +47,7 @@ public class HealthDisplayUI : MonoBehaviour
 
             if (textComponent != null)
             {
-                string displayText = $"{piece.characterName}: {piece.currentHealth}/{piece.maxHealth}";
+                string displayText = $"{piece.GetName()}: {piece.GetCurrentHealth()}/{piece.GetMaxHealth()}";
                 textComponent.text = displayText;
                 healthTexts[piece] = textComponent;
             }

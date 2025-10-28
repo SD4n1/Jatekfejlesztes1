@@ -157,14 +157,14 @@ public class CombatManager : MonoBehaviour
         {
             isPlayerTurn = true;
             UpdateTurnUI();
-            ShowMessage($"A köröd: {currentUnit.characterName}");
+            ShowMessage($"A köröd: {currentUnit.GetName()}");
             SelectCharacter(currentUnit);
         }
     }
 
     IEnumerator ExecuteSingleEnemyTurn(Chessman enemyUnit)
     {
-        ShowMessage($"{enemyUnit.characterName} köre...");
+        ShowMessage($"{enemyUnit.GetName()} köre...");
         yield return new WaitForSeconds(0.75f);
 
         List<Chessman> alivePlayers = playerTeam.FindAll(p => p != null && p.IsAlive());
@@ -183,12 +183,12 @@ public class CombatManager : MonoBehaviour
             if (target != null && !target.isEnemy && target.IsAlive())
             {
                 int distance = CalculateDistance(enemyUnit.gridPosition, target.gridPosition);
-                if (distance <= enemyUnit.attackRange)
+                if (distance <= enemyUnit.GetAttackRange())
                 {
                     isProcessing = true;
                     enemyUnit.SetSelected(true);
                     target.SetHighlight(true);
-                    ShowMessage($"{enemyUnit.characterName} megtámadja {target.characterName}-t!");
+                    ShowMessage($"{enemyUnit.GetName()} megtámadja {target.GetName()}-t!");
                     yield return new WaitForSeconds(0.5f);
 
                     if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
@@ -216,7 +216,7 @@ public class CombatManager : MonoBehaviour
 
                 isProcessing = true;
                 enemyUnit.SetSelected(true);
-                ShowMessage($"{enemyUnit.characterName} lép.");
+                ShowMessage($"{enemyUnit.GetName()} lép.");
                 yield return new WaitForSeconds(0.3f);
 
                 yield return enemyUnit.MoveToTile(targetTile);
@@ -226,7 +226,7 @@ public class CombatManager : MonoBehaviour
             }
             else
             {
-                ShowMessage($"{enemyUnit.characterName} várakozik.");
+                ShowMessage($"{enemyUnit.GetName()} várakozik.");
                 yield return new WaitForSeconds(0.5f);
             }
         }
@@ -329,7 +329,7 @@ public class CombatManager : MonoBehaviour
                 }
 
                 int distance = CalculateDistance(selectedAttacker.gridPosition, clickedChar.gridPosition);
-                int currentAttackRange = (selectedAbility != null) ? selectedAbility.range : selectedAttacker.attackRange;
+                int currentAttackRange = (selectedAbility != null) ? selectedAbility.range : selectedAttacker.GetAttackRange();
 
                 if (distance <= currentAttackRange)
                 {
@@ -403,14 +403,14 @@ public class CombatManager : MonoBehaviour
 
         if (abilityButton1 != null)
         {
-            bool canUseAbility = !characterHasActed && selectedAttacker != null && selectedAttacker.abilities.Count > 0;
+            bool canUseAbility = !characterHasActed && selectedAttacker != null && selectedAttacker.GetAbilities().Count > 0;
             abilityButton1.gameObject.SetActive(canUseAbility);
             if (canUseAbility)
             {
                 var buttonText = abilityButton1.GetComponentInChildren<TextMeshProUGUI>();
-                if (buttonText != null) buttonText.text = selectedAttacker.abilities[0].abilityName;
+                if (buttonText != null) buttonText.text = selectedAttacker.GetAbilities()[0].abilityName;
                 abilityButton1.onClick.RemoveAllListeners();
-                abilityButton1.onClick.AddListener(() => OnPrepareAbility(selectedAttacker.abilities[0]));
+                abilityButton1.onClick.AddListener(() => OnPrepareAbility(selectedAttacker.GetAbilities()[0]));
             }
         }
 
@@ -447,7 +447,7 @@ public class CombatManager : MonoBehaviour
         HideActionUI();
         if (gridManager != null && selectedAttacker != null)
         {
-            Debug.Log($"KÉPESSÉG ELŐKÉSZÍTÉS: Bábu={selectedAttacker.characterName}, Képesség={ability.abilityName}, Hatótáv={ability.range}");
+            Debug.Log($"KÉPESSÉG ELŐKÉSZÍTÉS: Bábu={selectedAttacker.GetName()}, Képesség={ability.abilityName}, Hatótáv={ability.range}");
             attackRangeTiles = gridManager.FindReachableTiles(selectedAttacker.gridPosition, ability.range, true);
             gridManager.ShowAttackTiles(attackRangeTiles);
         }
@@ -490,7 +490,7 @@ public class CombatManager : MonoBehaviour
         isProcessing = true;
         currentState = CombatState.Processing;
         characterHasActed = true;
-        ShowMessage($"{selectedAttacker.characterName} várakozik.");
+        ShowMessage($"{selectedAttacker.GetName()} várakozik.");
         yield return new WaitForSeconds(0.5f);
         CheckPlayerTurnEnd();
     }
@@ -500,7 +500,7 @@ public class CombatManager : MonoBehaviour
         isProcessing = true;
         currentState = CombatState.Processing;
         characterHasActed = true;
-        ShowMessage($"{selectedAttacker.characterName} megtámadja {selectedTarget.characterName}-t!");
+        ShowMessage($"{selectedAttacker.GetName()} megtámadja {selectedTarget.GetName()}-t!");
         if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
 
         yield return selectedAttacker.AttackAnimation(selectedTarget);
@@ -515,7 +515,7 @@ public class CombatManager : MonoBehaviour
         isProcessing = true;
         currentState = CombatState.Processing;
         characterHasActed = true;
-        ShowMessage($"{selectedAttacker.characterName} használja: {ability.abilityName}!");
+        ShowMessage($"{selectedAttacker.GetName()} használja: {ability.abilityName}!");
         yield return new WaitForSeconds(0.5f);
 
         bool success = ability.Activate(selectedAttacker, target);
@@ -594,7 +594,7 @@ public class CombatManager : MonoBehaviour
                         isProcessing = true;
                         enemyAttacker.SetSelected(true);
                         target.SetHighlight(true);
-                        ShowMessage($"{enemyAttacker.characterName} megtámadja {target.characterName}-t!");
+                        ShowMessage($"{enemyAttacker.GetName()} megtámadja {target.GetName()}-t!");
                         yield return new WaitForSeconds(0.5f);
 
                         if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
@@ -639,7 +639,7 @@ public class CombatManager : MonoBehaviour
                     // === AKCIÓ: MOZGÁS ===
                     isProcessing = true;
                     enemyAttacker.SetSelected(true);
-                    ShowMessage($"{enemyAttacker.characterName} lép ide: {targetTile}."); // Kiírjuk a célmezőt is
+                    ShowMessage($"{enemyAttacker.GetName()} lép ide: {targetTile}."); // Kiírjuk a célmezőt is
                     yield return new WaitForSeconds(0.3f);
 
                     yield return enemyAttacker.MoveToTile(targetTile); // Chessman mozgás animációja
@@ -748,7 +748,7 @@ public class CombatManager : MonoBehaviour
 
     int CalculateDistance(Vector2Int posA, Vector2Int posB)
     {
-        return Mathf.Abs(posA.x - posB.x) + Mathf.Abs(posA.y - posB.y);
+        return Mathf.Max(Mathf.Abs(posA.x - posB.x), Mathf.Abs(posA.y - posB.y));
     }
 
     Chessman FindClosestPlayer(Chessman attacker, List<Chessman> alivePlayers)

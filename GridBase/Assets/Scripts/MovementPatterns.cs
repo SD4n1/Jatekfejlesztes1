@@ -28,12 +28,11 @@ public static class MovementPatterns
                 {
                     if (targetPiece.isEnemy != isEnemy)
                         tiles.Add(target);
-                    break; // nem tud továbbmenni rajta
+                    break;
                 }
             }
         }
 
         return tiles;
     }
-    // stb.: LineMove, RangedMove...
 }
