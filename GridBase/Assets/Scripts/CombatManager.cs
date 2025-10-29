@@ -551,8 +551,6 @@ public class CombatManager : MonoBehaviour
     // Ellenség AI Fázis
     //--------------------------------------------------------------------------
 
-    // CSERÉLD LE ERRE A TELJES FÜGGVÉNYT a CombatManager.cs-ben
-
     /*IEnumerator ExecuteEnemyTurn()
     {
         ShowMessage("Ellenség köre...");

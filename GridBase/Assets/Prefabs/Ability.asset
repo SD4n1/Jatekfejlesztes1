@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e78b35abbbba1fc4a9f0239d74484496, type: 3}
-  m_Name: FireBall
+  m_Name: Ability
   m_EditorClassIdentifier: Assembly-CSharp::DamageAbility
-  abilityName: "T\u0171zlabda"
+  abilityName: "K\xE9pess\xE9g"
   description: 
   icon: {fileID: 0}
   range: 2
   targetType: 1
   cost: 0
-  damageAmount: 30
+  damageAmount: 5
   effectPrefab: {fileID: 0}

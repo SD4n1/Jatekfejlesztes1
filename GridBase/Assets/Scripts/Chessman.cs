@@ -20,7 +20,7 @@ public class Chessman : MonoBehaviour
 {
     // A logikai adatokat tároló objektum
     private BaseCharacter _characterData;
-
+    public List<Ability> abilities = new List<Ability>();
     public string GetName()
     {
         return _characterData?.Name ?? "Ismeretlen";
@@ -31,7 +31,7 @@ public class Chessman : MonoBehaviour
     }
     public List<Ability> GetAbilities()
     {
-        return _characterData?.Abilities ?? new List<Ability>();
+        return abilities;
     }
     public int GetCurrentHealth()
     {
