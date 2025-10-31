@@ -65,11 +65,37 @@ public class Chessman : MonoBehaviour
     public Vector2Int gridPosition;
     public string player; // black vagy white
 
+
+    private Animator animator;
+
     void Awake()
     {
         // 1. Létrehozzuk a logikai karakterobjektumot (BaseCharacter leszármazottat)
         InitializeCharacterData();
+
+        // ÚJ SOR: Animator referencia lekérése
+        // Használd a GetComponent<Animator>()-t, ha az Animator
+        // ugyanazon a GameObjecten van, vagy a GetComponentInChildren-t,
+        // ha egy gyerekobjektumon (pl. a "Sprite" objektumon) van.
+        animator = GetComponentInChildren<Animator>();
     }
+
+    public void SetAnimationBool(string nev, bool ertek)
+    {
+        if (animator != null)
+        {
+            animator.SetBool(nev, ertek);
+        }
+    }
+
+    public void SetAnimationTrigger(string nev)
+    {
+        if (animator != null)
+        {
+            animator.SetTrigger(nev);
+        }
+    }
+
 
     void Start()
     {
@@ -192,6 +218,7 @@ public class Chessman : MonoBehaviour
         float moveTime = 0.4f;
         float elapsed = 0f;
         Vector3 startPos = baseWorldPosition;
+        SetAnimationBool("IsWalking", true);
 
         while (elapsed < moveTime)
         {
@@ -199,6 +226,8 @@ public class Chessman : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        SetAnimationBool("IsWalking", false);
 
         transform.position = targetWorldPos;
         baseWorldPosition = targetWorldPos;
@@ -213,6 +242,8 @@ public class Chessman : MonoBehaviour
         Vector3 midPoint = startPos + (targetPos - startPos) * 0.3f;
         float moveTime = 0.2f;
         float elapsed = 0f;
+
+        SetAnimationTrigger("Attack");
 
         while (elapsed < moveTime)
         {
