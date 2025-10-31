@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\CombatManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CombatManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\ability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\damageability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Ability.cs",
               "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Ability.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Ability.cs",
@@ -38,8 +38,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Ability.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T11:02:46.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-22T11:02:46.458Z"
             },
             {
               "$type": "Document",
@@ -51,31 +50,30 @@
               "RelativeToolTip": "Assets\\Scripts\\DamageAbility.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAYwBMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T11:02:34.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-22T11:02:34.164Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Chessman.cs",
               "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Chessman.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Chessman.cs",
               "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Chessman.cs",
               "RelativeToolTip": "Assets\\Scripts\\Chessman.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAewB0AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAANAAAAAAAAAAAAAywPAAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-22T10:57:20.371Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CombatManager.cs",
               "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\CombatManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CombatManager.cs",
               "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\CombatManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\CombatManager.cs",
-              "ViewState": "AgIAACECAAAAVGZmZmYgwE0AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAIYCAAAAAAAAAAAqwCIDAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T11:21:31.016Z",
               "EditorCaption": ""
