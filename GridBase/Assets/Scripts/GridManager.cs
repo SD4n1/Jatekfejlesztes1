@@ -153,7 +153,8 @@ public class GridManager : MonoBehaviour
 
     // --- Jelz�k (Highlights) kezel�se ---
 
-    public void ShowMoveTiles(HashSet<Vector2Int> tiles)
+    // show move tiles; currentPos, if provided, will tint that tile differently (e.g. yellow)
+    public void ShowMoveTiles(HashSet<Vector2Int> tiles, Vector2Int? currentPos = null)
     {
         ClearMoveTiles();
         if (moveHighlightPrefab == null) return;
@@ -162,11 +163,33 @@ public class GridManager : MonoBehaviour
         {
             Vector3 worldPos = GridToWorld(tile);
 
-            // JAV�T�S: A Z �rt�k 1 helyett -0.1
-            // �gy a t�bla (0) el�tt, de a b�bu (-0.2) m�g�tt lesz
+            // JAVÍTÁS: A Z érték 1 helyett -0.1
+            // így a tábla (0) előtt, de a bábu (-0.2) mögött lesz
             worldPos.z = -0.1f;
 
-            activeHighlights.Add(Instantiate(moveHighlightPrefab, worldPos, Quaternion.identity));
+            var go = Instantiate(moveHighlightPrefab, worldPos, Quaternion.identity);
+            // Set 50% transparency for move plates. If this tile is the current position,
+            // tint it yellow and keep 50% alpha.
+            var img = go.GetComponent<UnityEngine.UI.Image>();
+            if (img != null)
+            {
+                Color c = img.color;
+                if (currentPos.HasValue && tile == currentPos.Value) c = Color.yellow;
+                c.a = 0.5f;
+                img.color = c;
+            }
+            else
+            {
+                var sr = go.GetComponentInChildren<SpriteRenderer>();
+                if (sr != null)
+                {
+                    Color c = sr.color;
+                    if (currentPos.HasValue && tile == currentPos.Value) c = Color.yellow;
+                    c.a = 0.5f;
+                    sr.color = c;
+                }
+            }
+            activeHighlights.Add(go);
         }
     }
 

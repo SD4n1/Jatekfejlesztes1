@@ -368,7 +368,7 @@ public class CombatManager : MonoBehaviour
         if (gridManager != null && selectedAttacker != null)
         {
             reachableTiles = selectedAttacker.GetValidMoveTiles();
-            gridManager.ShowMoveTiles(reachableTiles);
+            gridManager.ShowMoveTiles(reachableTiles, selectedAttacker.gridPosition);
         }
         ShowMessage("Lépj egy mezőre, vagy kattints a bábudra az akcióhoz.");
     }
