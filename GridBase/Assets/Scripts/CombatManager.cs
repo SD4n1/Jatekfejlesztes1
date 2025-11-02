@@ -299,18 +299,24 @@ public class CombatManager : MonoBehaviour
             // 2. LÉPÉS-HELY VÁLASZTÁS
             else if (currentState == CombatState.SelectingMoveTile)
             {
-                if (reachableTiles != null && reachableTiles.Contains(gridPos) && !gridManager.IsTileOccupied(gridPos))
+                // Allow moving to any reachable tile that is not occupied, except
+                // allow the current tile (occupied by the selected attacker) to
+                // be treated as a "stay" and open the action UI.
+                if (reachableTiles != null && reachableTiles.Contains(gridPos) && (!gridManager.IsTileOccupied(gridPos) || gridPos == selectedAttacker?.gridPosition))
                 {
-                    StartCoroutine(MoveCharacter(gridPos));
+                    if (selectedAttacker != null && gridPos == selectedAttacker.gridPosition)
+                    {
+                        // Clicked the current tile -> show action UI (stay)
+                        ShowActionUI();
+                    }
+                    else
+                    {
+                        StartCoroutine(MoveCharacter(gridPos));
+                    }
                 }
                 else if (clickedChar == selectedAttacker)
                 {
                     ShowActionUI();
-                }
-                else
-                {
-                    ClearSelection();
-                    currentState = CombatState.SelectingCharacter;
                 }
             }
             // 3. CÉLPONT VÁLASZTÁS
@@ -338,15 +344,6 @@ public class CombatManager : MonoBehaviour
                 else
                 {
                     ShowMessage("Nincs elég közel a támadáshoz!");
-                }
-            }
-            // 4. AKCIÓ MENÜ
-            else if (currentState == CombatState.CharacterSelected)
-            {
-                if (clickedChar == null || clickedChar != selectedAttacker)
-                {
-                    ClearSelection();
-                    currentState = CombatState.SelectingCharacter;
                 }
             }
         }
