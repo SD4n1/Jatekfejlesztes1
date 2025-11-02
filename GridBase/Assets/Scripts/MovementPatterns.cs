@@ -3,7 +3,8 @@ using UnityEngine;
 
 public static class MovementPatterns
 {
-    public static HashSet<Vector2Int> SurroundMove(Vector2Int pos, GridManager grid, bool isEnemy, int range = 1)
+    // includeOccupied: if true, will include tiles occupied by enemy units (used for attack targeting)
+    public static HashSet<Vector2Int> SurroundMove(Vector2Int pos, GridManager grid, bool isEnemy, int range = 1, bool includeOccupied = false)
     {
         HashSet<Vector2Int> tiles = new();
         Vector2Int[] directions = {
@@ -26,8 +27,15 @@ public static class MovementPatterns
                 }
                 else
                 {
-                    if (targetPiece.isEnemy != isEnemy)
+                    // Ha includeOccupied true, és az ott lévő bábu ellenség, akkor
+                    // vegyük fel támadási célként. Mozgásra (includeOccupied=false)
+                    // soha ne addjuk vissza a foglalt mezőt.
+                    if (includeOccupied && targetPiece.isEnemy != isEnemy)
+                    {
                         tiles.Add(target);
+                    }
+                    // Megtörjük a továbbhaladást ezen az irányon, mert egy foglalt
+                    // mező akadályozza a további elérést.
                     break;
                 }
             }
