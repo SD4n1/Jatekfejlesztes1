@@ -269,6 +269,13 @@ public class Chessman : MonoBehaviour
     {
         Debug.Log($"{_characterData.Name} meghalt.");
         if (gridManager != null) { gridManager.UnregisterCharacter(gridPosition); }
+
+        // Remove from turn order immediately so UI and logic don't try to act on dead unit
+        if (TurnOrderManager.Instance != null)
+        {
+            TurnOrderManager.Instance.RemoveUnit(this);
+        }
+
         gameObject.SetActive(false);
     }
 
