@@ -24,6 +24,7 @@ public class FighterCharacter : BaseCharacter
 
     public override HashSet<Vector2Int> GetValidAttackTiles(Vector2Int gridPos, GridManager grid)
     {
-        return MovementPatterns.SurroundMove(gridPos, grid, IsEnemy, AttackRange);
+        // includeOccupied = true so attacks can target occupied enemy tiles
+        return MovementPatterns.SurroundMove(gridPos, grid, IsEnemy, AttackRange, true);
     }
 }

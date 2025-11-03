@@ -100,6 +100,27 @@ public class TurnOrderManager : MonoBehaviour
         Debug.Log($"Új kör kezdődik! {turnOrder.Count} élő bábu van.");
     }
 
+    // Immediately remove a specific unit from the turn order (e.g. when it dies)
+    public void RemoveUnit(Chessman unit)
+    {
+        if (unit == null) return;
+
+        // Remove the exact unit and any null/dead leftovers
+        turnOrder.RemoveAll(u => u == null || !u.IsAlive() || u == unit);
+
+        // Clamp currentTurnIndex
+        if (turnOrder.Count == 0)
+        {
+            currentTurnIndex = 0;
+        }
+        else if (currentTurnIndex >= turnOrder.Count)
+        {
+            currentTurnIndex = 0;
+        }
+
+        UpdateTurnOrderUI();
+    }
+
     public void UpdateTurnOrderUI()
     {
         foreach (var element in turnOrderUIElements)
