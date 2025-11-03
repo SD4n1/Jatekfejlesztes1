@@ -299,18 +299,24 @@ public class CombatManager : MonoBehaviour
             // 2. LÉPÉS-HELY VÁLASZTÁS
             else if (currentState == CombatState.SelectingMoveTile)
             {
-                if (reachableTiles != null && reachableTiles.Contains(gridPos) && !gridManager.IsTileOccupied(gridPos))
+                // Allow moving to any reachable tile that is not occupied, except
+                // allow the current tile (occupied by the selected attacker) to
+                // be treated as a "stay" and open the action UI.
+                if (reachableTiles != null && reachableTiles.Contains(gridPos) && (!gridManager.IsTileOccupied(gridPos) || gridPos == selectedAttacker?.gridPosition))
                 {
-                    StartCoroutine(MoveCharacter(gridPos));
+                    if (selectedAttacker != null && gridPos == selectedAttacker.gridPosition)
+                    {
+                        // Clicked the current tile -> show action UI (stay)
+                        ShowActionUI();
+                    }
+                    else
+                    {
+                        StartCoroutine(MoveCharacter(gridPos));
+                    }
                 }
                 else if (clickedChar == selectedAttacker)
                 {
                     ShowActionUI();
-                }
-                else
-                {
-                    ClearSelection();
-                    currentState = CombatState.SelectingCharacter;
                 }
             }
             // 3. CÉLPONT VÁLASZTÁS
@@ -340,15 +346,6 @@ public class CombatManager : MonoBehaviour
                     ShowMessage("Nincs elég közel a támadáshoz!");
                 }
             }
-            // 4. AKCIÓ MENÜ
-            else if (currentState == CombatState.CharacterSelected)
-            {
-                if (clickedChar == null || clickedChar != selectedAttacker)
-                {
-                    ClearSelection();
-                    currentState = CombatState.SelectingCharacter;
-                }
-            }
         }
     }
 
@@ -371,7 +368,7 @@ public class CombatManager : MonoBehaviour
         if (gridManager != null && selectedAttacker != null)
         {
             reachableTiles = selectedAttacker.GetValidMoveTiles();
-            gridManager.ShowMoveTiles(reachableTiles);
+            gridManager.ShowMoveTiles(reachableTiles, selectedAttacker.gridPosition);
         }
         ShowMessage("Lépj egy mezőre, vagy kattints a bábudra az akcióhoz.");
     }
@@ -545,136 +542,6 @@ public class CombatManager : MonoBehaviour
             StartTurnBasedSystem();
         }
     }
-
-
-    //--------------------------------------------------------------------------
-    // Ellenség AI Fázis
-    //--------------------------------------------------------------------------
-
-    /*IEnumerator ExecuteEnemyTurn()
-    {
-        ShowMessage("Ellenség köre...");
-        yield return new WaitForSeconds(0.75f); // Kicsit több idő az AI gondolkodására
-
-        // Összegyűjtjük az élőket
-        List<Chessman> aliveEnemies = enemyTeam.FindAll(e => e != null && e.IsAlive());
-        List<Chessman> alivePlayers = playerTeam.FindAll(p => p != null && p.IsAlive());
-
-        // Ha nincs ellenség vagy játékos, vége
-        if (aliveEnemies.Count == 0 || alivePlayers.Count == 0)
-        {
-            if (!CheckGameOver()) { StartNewPlayerRound(); }
-            yield break;
-        }
-
-        // === ÚJ AI LOGIKA: Csak EGY bábuval lép ===
-        bool actionTaken = false; // Jelzi, hogy léptünk-e már
-
-        // 1. Prioritás: Támadás, ha lehet
-        // 1. Prioritás: Támadás, ha lehet
-        foreach (var enemyAttacker in aliveEnemies)
-        {
-            // Lekérjük a sakk-szabályok szerinti támadható mezőket
-            HashSet<Vector2Int> possibleAttackTiles = enemyAttacker.GetValidAttackTiles();
-
-            foreach (Vector2Int attackPos in possibleAttackTiles)
-            {
-                Chessman target = gridManager.GetCharacterAt(attackPos);
-                // Ha a célponton van élő játékos
-                if (target != null && !target.isEnemy && target.IsAlive())
-                {
-                    // === ÚJ SOR: TÁVOLSÁG ELLENŐRZÉSE ===
-                    int distance = CalculateDistance(enemyAttacker.gridPosition, target.gridPosition);
-                    if (distance <= enemyAttacker.attackRange)
-                    // === ÚJ SOR VÉGE ===
-                    {
-                        // === AKCIÓ: TÁMADÁS ===
-                        isProcessing = true;
-                        enemyAttacker.SetSelected(true);
-                        target.SetHighlight(true);
-                        ShowMessage($"{enemyAttacker.GetName()} megtámadja {target.GetName()}-t!");
-                        yield return new WaitForSeconds(0.5f);
-
-                        if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
-                        yield return enemyAttacker.AttackAnimation(target); // Chessman támadás animációja
-
-                        if (hitSound != null && musicSource != null) musicSource.PlayOneShot(hitSound);
-                        target.SetHighlight(false);
-                        enemyAttacker.SetSelected(false);
-                        yield return new WaitForSeconds(0.5f);
-
-                        actionTaken = true; // LÉPTÜNK!
-                        goto EndEnemyTurn; // Ugrás a kör végére
-                        // === TÁMADÁS VÉGE ===
-                    } // <- Bezárjuk az új 'if'-et
-                }
-            }
-            //if (actionTaken) break; // Ezt a sort akár ki is veheted, a goto miatt már nem kell
-        } // End Foreach Enemy (Attack Check)
-
-        // 2. Ha nem tudtunk támadni: Mozgás (az első bábuval, amelyik tud)
-        if (!actionTaken)
-        {
-            foreach (var enemyAttacker in aliveEnemies)
-            {
-                // Lekérjük a sakk-szabályok szerinti léphető mezőket
-                HashSet<Vector2Int> possibleMoveTiles = enemyAttacker.GetValidMoveTiles();
-
-                if (possibleMoveTiles.Count > 0)
-                {
-                    // === JAVÍTÁS: Véletlenszerű lépés választása ===
-                    // 1. Átalakítjuk a HashSet-et listává, hogy indexelni tudjuk
-                    List<Vector2Int> moveList = new List<Vector2Int>(possibleMoveTiles);
-
-                    // 2. Választunk egy véletlen indexet a lista méretén belül
-                    int randomIndex = Random.Range(0, moveList.Count);
-
-                    // 3. Kiválasztjuk a véletlen célmezőt
-                    Vector2Int targetTile = moveList[randomIndex];
-                    // === JAVÍTÁS VÉGE ===
-
-
-                    // === AKCIÓ: MOZGÁS ===
-                    isProcessing = true;
-                    enemyAttacker.SetSelected(true);
-                    ShowMessage($"{enemyAttacker.GetName()} lép ide: {targetTile}."); // Kiírjuk a célmezőt is
-                    yield return new WaitForSeconds(0.3f);
-
-                    yield return enemyAttacker.MoveToTile(targetTile); // Chessman mozgás animációja
-
-                    enemyAttacker.SetSelected(false);
-                    yield return new WaitForSeconds(0.3f);
-
-                    actionTaken = true; // LÉPTÜNK!
-                    goto EndEnemyTurn; // Ugrás a kör végére
-                    // === MOZGÁS VÉGE ===
-                }
-            }
-        }
-
-        // 3. Ha sem támadni, sem mozogni nem tudott senki: Várakozás
-        if (!actionTaken)
-        {
-            ShowMessage("Az ellenség nem tud lépni, várakozik.");
-            yield return new WaitForSeconds(0.5f);
-            actionTaken = true; // A várakozás is egy akció
-        }
-
-    // === CÍMKE A KÖR VÉGÉNEK ===
-    EndEnemyTurn:
-
-        isProcessing = false; // AI befejezte erre a körre
-
-        // Ha nincs vége a játéknak, jön a játékos
-        if (!CheckGameOver())
-        {
-            StartNewPlayerRound();
-        }
-    }*/
-
-    //--------------------------------------------------------------------------
-    // Segédfüggvények
-    //--------------------------------------------------------------------------
 
 
     void ClearSelection()

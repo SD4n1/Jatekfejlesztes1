@@ -269,6 +269,13 @@ public class Chessman : MonoBehaviour
     {
         Debug.Log($"{_characterData.Name} meghalt.");
         if (gridManager != null) { gridManager.UnregisterCharacter(gridPosition); }
+
+        // Remove from turn order immediately so UI and logic don't try to act on dead unit
+        if (TurnOrderManager.Instance != null)
+        {
+            TurnOrderManager.Instance.RemoveUnit(this);
+        }
+
         gameObject.SetActive(false);
     }
 
@@ -288,7 +295,12 @@ public class Chessman : MonoBehaviour
     public HashSet<Vector2Int> GetValidMoveTiles()
     {
         if (_characterData == null || gridManager == null) return new HashSet<Vector2Int>();
-        return _characterData.GetValidMoveTiles(gridPosition, gridManager);
+        var tiles = _characterData.GetValidMoveTiles(gridPosition, gridManager);
+        // Include current tile so the unit can "move"/stay on the same cell if needed.
+        if (tiles == null)
+            tiles = new HashSet<Vector2Int>();
+        tiles.Add(gridPosition);
+        return tiles;
     }
 
     public HashSet<Vector2Int> GetValidAttackTiles()
