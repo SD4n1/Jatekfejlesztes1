@@ -15,7 +15,9 @@ public enum CastType
     Healer
 }
 
-
+// ÚJ: A [RequireComponent] biztosítja, hogy ezen a GameObjecten mindig legyen
+// egy AudioSource komponens, ami a hangokat lejátssza.
+[RequireComponent(typeof(AudioSource))]
 public class Chessman : MonoBehaviour
 {
     // A logikai adatokat tároló objektum
@@ -58,6 +60,15 @@ public class Chessman : MonoBehaviour
     public GameObject selectionFrame;
     public Slider healthSlider;
 
+    // --- ÚJ SZEKCIÓ ---
+    [Header("Audio")]
+    [Tooltip("A támadáskor lejátszandó hang.")]
+    public AudioClip attackSound; // ÚJ
+
+    [Tooltip("A képesség használatakor lejátszandó hang.")]
+    public AudioClip abilitySound; // ÚJ
+    // --- ÚJ SZEKCIÓ VÉGE ---
+
     [Header("System")]
     private GridManager gridManager;
     private Vector3 baseWorldPosition;
@@ -67,17 +78,20 @@ public class Chessman : MonoBehaviour
 
 
     private Animator animator;
+    private AudioSource audioSource; // ÚJ: Referencia a hangforráshoz
 
     void Awake()
     {
         // 1. Létrehozzuk a logikai karakterobjektumot (BaseCharacter leszármazottat)
         InitializeCharacterData();
 
-        // ÚJ SOR: Animator referencia lekérése
-        // Használd a GetComponent<Animator>()-t, ha az Animator
-        // ugyanazon a GameObjecten van, vagy a GetComponentInChildren-t,
-        // ha egy gyerekobjektumon (pl. a "Sprite" objektumon) van.
+        // Animator referencia lekérése
         animator = GetComponentInChildren<Animator>();
+
+        // ÚJ SOROK: AudioSource referencia lekérése
+        // A [RequireComponent] miatt ennek már léteznie kell
+        audioSource = GetComponent<AudioSource>();
+        audioSource.playOnAwake = false; // Biztonsági beállítás, ne induljon el a játékkal
     }
 
     public void SetAnimationBool(string nev, bool ertek)
@@ -257,6 +271,9 @@ public class Chessman : MonoBehaviour
 
         SetAnimationTrigger("Attack");
 
+        // ÚJ SOR: Támadás hang lejátszása
+        PlaySound(attackSound);
+
         while (elapsed < moveTime)
         {
             transform.position = Vector3.Lerp(startPos, midPoint, elapsed / moveTime);
@@ -299,6 +316,34 @@ public class Chessman : MonoBehaviour
     public void SetHighlight(bool highlight) { /* Ide jöhet a glow effekt */ }
     // === VÉGE: MOZGÁS ÉS AKCIÓK ===
 
+
+    // -------------------------------------------------------------------
+    // --- ÚJ SZEKCIÓ: HANGKEZELÉS ---
+    // -------------------------------------------------------------------
+
+    /// <summary>
+    /// Lejátszik egy hangklipet, ha van hozzárendelve AudioSource és AudioClip.
+    /// </summary>
+    /// <param name="clipToPlay">A lejátszandó AudioClip</param>
+    public void PlaySound(AudioClip clipToPlay)
+    {
+        if (audioSource != null && clipToPlay != null)
+        {
+            // A PlayOneShot ideális rövid effektekhez, nem szakítja meg a háttérzenét
+            // és egymásra is tud játszani hangokat, ha gyorsan hívják.
+            audioSource.PlayOneShot(clipToPlay);
+        }
+    }
+
+    /// <summary>
+    /// Lejátsza a karakterhez rendelt általános képesség-hangot.
+    /// Ezt hívd meg a képességet aktiváló logikából (pl. amikor a játékos
+    /// kiválaszt és elsüt egy képességet).
+    /// </summary>
+    public void PlayAbilitySound()
+    {
+        PlaySound(abilitySound);
+    }
 
     // -------------------------------------------------------------------
     // SAKK LÉPÉS LOGIKA (DELEGÁLVA!)
