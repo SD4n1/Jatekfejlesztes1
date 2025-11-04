@@ -265,4 +265,10 @@ public class Chessman : MonoBehaviour
         if (_characterData == null || gridManager == null) return new HashSet<Vector2Int>();
         return _characterData.GetValidAttackTiles(gridPosition, gridManager);
     }
+    public HashSet<Vector2Int> GetValidAttackTilesFrom(Vector2Int simulatedPos)
+    {
+        if (_characterData == null || gridManager == null) return new HashSet<Vector2Int>();
+        // A _characterData logikáját hívjuk, de a "szimulált" pozícióval
+        return _characterData.GetValidAttackTiles(simulatedPos, gridManager);
+    }
 }
