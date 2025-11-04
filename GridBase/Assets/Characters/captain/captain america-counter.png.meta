@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 0b65b48192604bc4ca0817feef8514b1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3163560499502523397
+    second: captain america-counter_0
+  - first:
+      213: 7117969239787709434
+    second: captain america-counter_1
+  - first:
+      213: 3861712817559376684
+    second: captain america-counter_2
+  - first:
+      213: -5023443219934307187
+    second: captain america-counter_3
+  - first:
+      213: -5464759881144761921
+    second: captain america-counter_4
+  - first:
+      213: -8808139540477194585
+    second: captain america-counter_5
+  - first:
+      213: 791114265039534730
+    second: captain america-counter_6
+  - first:
+      213: -6650343994851029530
+    second: captain america-counter_7
+  - first:
+      213: 6957264723082549426
+    second: captain america-counter_8
+  - first:
+      213: 928739892383086482
+    second: captain america-counter_9
+  - first:
+      213: -1751058180729569924
+    second: captain america-counter_10
+  - first:
+      213: -607060510867356453
+    second: captain america-counter_11
+  - first:
+      213: -1702774349975017460
+    second: captain america-counter_12
+  - first:
+      213: 780136451970974035
+    second: captain america-counter_13
+  - first:
+      213: 711511216442525850
+    second: captain america-counter_14
+  - first:
+      213: -3424005021138381041
+    second: captain america-counter_15
+  - first:
+      213: -1152495053091276828
+    second: captain america-counter_16
+  - first:
+      213: 3265617223642113615
+    second: captain america-counter_17
+  - first:
+      213: 2029155043240962665
+    second: captain america-counter_18
+  - first:
+      213: 2467181057752288548
+    second: captain america-counter_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: captain america-counter_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 776
+        width: 170
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfbd1b9ac76c814d0800000000000000
+      internalID: -3163560499502523397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 776
+        width: 170
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af324bb9f4b18c260800000000000000
+      internalID: 7117969239787709434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_2
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 777
+        width: 174
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c23133be85f879530800000000000000
+      internalID: 3861712817559376684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_3
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 777
+        width: 175
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8c987eb105294ab0800000000000000
+      internalID: -5023443219934307187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 518
+        width: 174
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb18f8577d54924b0800000000000000
+      internalID: -5464759881144761921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_5
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 518
+        width: 174
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aec8c561c333c580800000000000000
+      internalID: -8808139540477194585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_6
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 518
+        width: 149
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8afc688b3a9afa00800000000000000
+      internalID: 791114265039534730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_7
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 518
+        width: 151
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed80c82f5b35b3a0800000000000000
+      internalID: -6650343994851029530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_8
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 259
+        width: 237
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b811bb876b2d8060800000000000000
+      internalID: 6957264723082549426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_9
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 404
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2977a3ee20c83ec00800000000000000
+      internalID: 928739892383086482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_10
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 399
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d7294bcddf2b7e0800000000000000
+      internalID: -1751058180729569924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_11
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 259
+        width: 208
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd485948ea94397f0800000000000000
+      internalID: -607060510867356453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_12
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 259
+        width: 230
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08a71910c78e58e0800000000000000
+      internalID: -1702774349975017460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_13
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 259
+        width: 225
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 351401048f993da00800000000000000
+      internalID: 780136451970974035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_14
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 390
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9843cd7eabcfd900800000000000000
+      internalID: 711511216442525850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_15
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 379
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0794ed039d7b70d0800000000000000
+      internalID: -3424005021138381041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_16
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 234
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e7791bfad38100f0800000000000000
+      internalID: -1152495053091276828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_17
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 0
+        width: 234
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46e59b109dc15d20800000000000000
+      internalID: 3265617223642113615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_18
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 0
+        width: 173
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96ae19ac2c1092c10800000000000000
+      internalID: 2029155043240962665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain america-counter_19
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 0
+        width: 164
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42dc5efa9103d3220800000000000000
+      internalID: 2467181057752288548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      captain america-counter_0: -3163560499502523397
+      captain america-counter_1: 7117969239787709434
+      captain america-counter_10: -1751058180729569924
+      captain america-counter_11: -607060510867356453
+      captain america-counter_12: -1702774349975017460
+      captain america-counter_13: 780136451970974035
+      captain america-counter_14: 711511216442525850
+      captain america-counter_15: -3424005021138381041
+      captain america-counter_16: -1152495053091276828
+      captain america-counter_17: 3265617223642113615
+      captain america-counter_18: 2029155043240962665
+      captain america-counter_19: 2467181057752288548
+      captain america-counter_2: 3861712817559376684
+      captain america-counter_3: -5023443219934307187
+      captain america-counter_4: -5464759881144761921
+      captain america-counter_5: -8808139540477194585
+      captain america-counter_6: 791114265039534730
+      captain america-counter_7: -6650343994851029530
+      captain america-counter_8: 6957264723082549426
+      captain america-counter_9: 928739892383086482
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

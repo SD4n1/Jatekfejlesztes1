@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 9190a02bc2756ca4f9cb3aaabff1d798
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8877795204194579087
+    second: doctor strange-heal_0
+  - first:
+      213: -8364162169785858491
+    second: doctor strange-heal_1
+  - first:
+      213: -2761849709054677900
+    second: doctor strange-heal_2
+  - first:
+      213: -3148918398886226154
+    second: doctor strange-heal_3
+  - first:
+      213: -1765243698455504952
+    second: doctor strange-heal_4
+  - first:
+      213: 2139335072948551942
+    second: doctor strange-heal_5
+  - first:
+      213: 7297579942532780761
+    second: doctor strange-heal_6
+  - first:
+      213: -6720920787338697207
+    second: doctor strange-heal_7
+  - first:
+      213: 8061803315880990287
+    second: doctor strange-heal_8
+  - first:
+      213: 4695474244316310217
+    second: doctor strange-heal_9
+  - first:
+      213: 1485603829259192409
+    second: doctor strange-heal_10
+  - first:
+      213: 8717202886588805734
+    second: doctor strange-heal_11
+  - first:
+      213: -2421211255219898189
+    second: doctor strange-heal_12
+  - first:
+      213: -3792008008089044317
+    second: doctor strange-heal_13
+  - first:
+      213: -2141142155794844591
+    second: doctor strange-heal_14
+  - first:
+      213: -8649036882188142966
+    second: doctor strange-heal_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: doctor strange-heal_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 536
+        width: 191
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f823fae93b3443b70800000000000000
+      internalID: 8877795204194579087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 536
+        width: 167
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 546472262d68ceb80800000000000000
+      internalID: -8364162169785858491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_2
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 536
+        width: 160
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ca7c09250fba9d0800000000000000
+      internalID: -2761849709054677900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 269
+        width: 156
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617d1bf566bcc44d0800000000000000
+      internalID: -3148918398886226154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 269
+        width: 142
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c7109b75389087e0800000000000000
+      internalID: -1765243698455504952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_5
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 269
+        width: 203
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60102a60ae170bd10800000000000000
+      internalID: 2139335072948551942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 239
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d29ea22b46364560800000000000000
+      internalID: 7297579942532780761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_7
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 2
+        width: 187
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9066323272e7ab2a0800000000000000
+      internalID: -6720920787338697207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_8
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 233
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46172c076741ef60800000000000000
+      internalID: 8061803315880990287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_9
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 2
+        width: 197
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca287092fca92140800000000000000
+      internalID: 4695474244316310217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_10
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 2
+        width: 192
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95844f7cfcced9410800000000000000
+      internalID: 1485603829259192409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 209
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662b222f6d9b9f870800000000000000
+      internalID: 8717202886588805734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_12
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 202
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8b0760131266ed0800000000000000
+      internalID: -2421211255219898189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 190
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aa7a6cbec4106bc0800000000000000
+      internalID: -3792008008089044317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_14
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 180
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 154fb36bd822942e0800000000000000
+      internalID: -2141142155794844591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctor strange-heal_15
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 189
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a867cebb7c278f780800000000000000
+      internalID: -8649036882188142966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      doctor strange-heal_0: 8877795204194579087
+      doctor strange-heal_1: -8364162169785858491
+      doctor strange-heal_10: 1485603829259192409
+      doctor strange-heal_11: 8717202886588805734
+      doctor strange-heal_12: -2421211255219898189
+      doctor strange-heal_13: -3792008008089044317
+      doctor strange-heal_14: -2141142155794844591
+      doctor strange-heal_15: -8649036882188142966
+      doctor strange-heal_2: -2761849709054677900
+      doctor strange-heal_3: -3148918398886226154
+      doctor strange-heal_4: -1765243698455504952
+      doctor strange-heal_5: 2139335072948551942
+      doctor strange-heal_6: 7297579942532780761
+      doctor strange-heal_7: -6720920787338697207
+      doctor strange-heal_8: 8061803315880990287
+      doctor strange-heal_9: 4695474244316310217
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

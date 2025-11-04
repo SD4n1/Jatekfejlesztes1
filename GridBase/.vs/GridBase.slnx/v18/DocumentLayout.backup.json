@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\fightercharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fightercharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\healability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\tankslamability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tankslamability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\ability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\ability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\chessman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\gyorf\\documents\\jatekfejlesztes1\\gridbase\\assets\\scripts\\damageability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,56 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Ability.cs",
-              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Ability.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Ability.cs",
-              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Ability.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Ability.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T11:02:46.458Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DamageAbility.cs",
-              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\DamageAbility.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DamageAbility.cs",
-              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\DamageAbility.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DamageAbility.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAYwBMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T11:02:34.164Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Chessman.cs",
-              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Chessman.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Chessman.cs",
-              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Chessman.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Chessman.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAAywPAAAAA2AAAAAAAAAA==",
+              "Title": "FighterCharacter.cs",
+              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\FighterCharacter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FighterCharacter.cs",
+              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\FighterCharacter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\FighterCharacter.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwBAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T10:57:20.371Z",
+              "WhenOpened": "2025-11-04T18:07:21.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "HealAbility.cs",
+              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\HealAbility.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HealAbility.cs",
+              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\HealAbility.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HealAbility.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAiwBgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T17:52:06.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TankSlamAbility.cs",
+              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\TankSlamAbility.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TankSlamAbility.cs",
+              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\TankSlamAbility.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TankSlamAbility.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwBkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T17:51:57.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Ability.cs",
+              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Ability.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Ability.cs",
+              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Ability.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Ability.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T11:02:46.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DamageAbility.cs",
+              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\DamageAbility.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DamageAbility.cs",
+              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\DamageAbility.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DamageAbility.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwCEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T11:02:34.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CombatManager.cs",
               "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\CombatManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CombatManager.cs",
               "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\CombatManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\CombatManager.cs",
-              "ViewState": "AgIAAIYCAAAAAAAAAAAqwCIDAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAG8CAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T11:21:31.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Chessman.cs",
+              "DocumentMoniker": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Chessman.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Chessman.cs",
+              "ToolTip": "C:\\Users\\gyorf\\Documents\\Jatekfejlesztes1\\GridBase\\Assets\\Scripts\\Chessman.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Chessman.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAAEQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T17:09:33.281Z",
               "EditorCaption": ""
             }
           ]

@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: f905094d7141ccd4581fe0787f52635d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 435859355983005765
+    second: loki-ability_0
+  - first:
+      213: -8808906966320532181
+    second: loki-ability_1
+  - first:
+      213: -8416256528060430622
+    second: loki-ability_2
+  - first:
+      213: 6450069780815245683
+    second: loki-ability_3
+  - first:
+      213: 815839793608760880
+    second: loki-ability_4
+  - first:
+      213: -8846493386344354589
+    second: loki-ability_5
+  - first:
+      213: -1988237570692660278
+    second: loki-ability_6
+  - first:
+      213: 5580528684839133467
+    second: loki-ability_7
+  - first:
+      213: 5603443405562234964
+    second: loki-ability_8
+  - first:
+      213: 5731551639052509633
+    second: loki-ability_9
+  - first:
+      213: -742968356717505555
+    second: loki-ability_10
+  - first:
+      213: 54664306775150628
+    second: loki-ability_11
+  - first:
+      213: -5054271637880339934
+    second: loki-ability_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: loki-ability_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 691
+        width: 165
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 548c56566cb7c0600800000000000000
+      internalID: 435859355983005765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_1
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 691
+        width: 161
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25300529c970c580800000000000000
+      internalID: -8808906966320532181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_2
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 691
+        width: 166
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6456a6743733b80800000000000000
+      internalID: -8416256528060430622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_3
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 362
+        width: 167
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37179fdaa40438950800000000000000
+      internalID: 6450069780815245683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_4
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 362
+        width: 167
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e9da348f1725b00800000000000000
+      internalID: 815839793608760880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_5
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 362
+        width: 251
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec2a17c221fa3580800000000000000
+      internalID: -8846493386344354589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 268
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac347cda67c5864e0800000000000000
+      internalID: -1988237570692660278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_7
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 133
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b11e6be9545027d40800000000000000
+      internalID: 5580528684839133467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_8
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 33
+        width: 221
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 458ca8bc61e63cd40800000000000000
+      internalID: 5603443405562234964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_9
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 33
+        width: 163
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c1688149df8a8f40800000000000000
+      internalID: 5731551639052509633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_10
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 62
+        width: 57
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de35f7a473270b5f0800000000000000
+      internalID: -742968356717505555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_11
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 121
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 420d93bb5e432c000800000000000000
+      internalID: 54664306775150628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: loki-ability_12
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 0
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2228fc959be9bd9b0800000000000000
+      internalID: -5054271637880339934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      loki-ability_0: 435859355983005765
+      loki-ability_1: -8808906966320532181
+      loki-ability_10: -742968356717505555
+      loki-ability_11: 54664306775150628
+      loki-ability_12: -5054271637880339934
+      loki-ability_2: -8416256528060430622
+      loki-ability_3: 6450069780815245683
+      loki-ability_4: 815839793608760880
+      loki-ability_5: -8846493386344354589
+      loki-ability_6: -1988237570692660278
+      loki-ability_7: 5580528684839133467
+      loki-ability_8: 5603443405562234964
+      loki-ability_9: 5731551639052509633
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

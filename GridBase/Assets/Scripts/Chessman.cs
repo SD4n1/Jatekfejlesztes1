@@ -294,6 +294,57 @@ public class Chessman : MonoBehaviour
         transform.position = baseWorldPosition;
     }
 
+    public IEnumerator AbilityAnimation(Chessman target, Ability abilityToUse)
+    {
+
+        SetAnimationTrigger("Ability");
+        PlayAbilitySound();
+
+        if (target != null && target != this)
+        {
+            Vector3 startPos = baseWorldPosition;
+            Vector3 targetPos = target.transform.position;
+            Vector3 midPoint = startPos + (targetPos - startPos) * 0.3f;
+            float moveTime = 0.2f;
+            float elapsed = 0f;
+
+            while (elapsed < moveTime)
+            {
+                transform.position = Vector3.Lerp(startPos, midPoint, elapsed / moveTime);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+
+            if (abilityToUse != null)
+            {
+                abilityToUse.Activate(this, target);
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            elapsed = 0f;
+            while (elapsed < moveTime)
+            {
+                transform.position = Vector3.Lerp(midPoint, startPos, elapsed / moveTime);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = baseWorldPosition;
+        }
+        else
+        {
+
+            if (abilityToUse != null)
+            {
+                abilityToUse.Activate(this, target);
+            }
+
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
     void Die()
     {
         Debug.Log($"{_characterData.Name} meghalt.");
@@ -314,46 +365,24 @@ public class Chessman : MonoBehaviour
     }
 
     public void SetHighlight(bool highlight) { /* Ide jöhet a glow effekt */ }
-    // === VÉGE: MOZGÁS ÉS AKCIÓK ===
 
-
-    // -------------------------------------------------------------------
-    // --- ÚJ SZEKCIÓ: HANGKEZELÉS ---
-    // -------------------------------------------------------------------
-
-    /// <summary>
-    /// Lejátszik egy hangklipet, ha van hozzárendelve AudioSource és AudioClip.
-    /// </summary>
-    /// <param name="clipToPlay">A lejátszandó AudioClip</param>
     public void PlaySound(AudioClip clipToPlay)
     {
         if (audioSource != null && clipToPlay != null)
         {
-            // A PlayOneShot ideális rövid effektekhez, nem szakítja meg a háttérzenét
-            // és egymásra is tud játszani hangokat, ha gyorsan hívják.
             audioSource.PlayOneShot(clipToPlay);
         }
     }
 
-    /// <summary>
-    /// Lejátsza a karakterhez rendelt általános képesség-hangot.
-    /// Ezt hívd meg a képességet aktiváló logikából (pl. amikor a játékos
-    /// kiválaszt és elsüt egy képességet).
-    /// </summary>
     public void PlayAbilitySound()
     {
         PlaySound(abilitySound);
     }
 
-    // -------------------------------------------------------------------
-    // SAKK LÉPÉS LOGIKA (DELEGÁLVA!)
-    // -------------------------------------------------------------------
-
     public HashSet<Vector2Int> GetValidMoveTiles()
     {
         if (_characterData == null || gridManager == null) return new HashSet<Vector2Int>();
         var tiles = _characterData.GetValidMoveTiles(gridPosition, gridManager);
-        // Include current tile so the unit can "move"/stay on the same cell if needed.
         if (tiles == null)
             tiles = new HashSet<Vector2Int>();
         tiles.Add(gridPosition);
