@@ -35,4 +35,23 @@ public static class MovementPatterns
 
         return tiles;
     }
+
+    public static HashSet<Vector2Int> GetTilesInArea(Vector2Int center, GridManager grid, int size)
+    {
+        HashSet<Vector2Int> tiles = new();
+        int radius = (size - 1) / 2; // size=3 -> radius=1
+
+        for (int x = -radius; x <= radius; x++)
+        {
+            for (int y = -radius; y <= radius; y++)
+            {
+                Vector2Int target = center + new Vector2Int(x, y);
+                if (grid.IsValidTile(target))
+                {
+                    tiles.Add(target);
+                }
+            }
+        }
+        return tiles;
+    }
 }
