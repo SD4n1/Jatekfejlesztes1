@@ -1,35 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Szükséges a TextMeshPro-hoz
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement; // Szükséges az újraindításhoz
+using UnityEngine.SceneManagement;
 using System.Linq;
-
-
 
 public enum AIActionType { Attack, Move, Wait }
 
-// Ez az osztály/struktúra tárol egy lehetséges AI lépést és annak pontszámát
 public class AIAction
 {
-    public float Score;          // Minél magasabb, annál jobb
-    public AIActionType Type;    // A terv VÉGE (ha csak lép, Move; ha támad, Attack)
+    public float Score;
+    public AIActionType Type;
 
-    // A terv részei:
-    public Chessman TargetToAttack; // Kit támadjon (ha a Type == Attack)
-    public Vector2Int TileToMoveTo; // Hova lépjen (akár támadás előtt, akár csak simán)
+    public Chessman TargetToAttack;
+    public Vector2Int TileToMoveTo;
 
-    // Konstruktor: Várakozás
     public AIAction(AIActionType type, float score)
     {
         Type = type;
         Score = score;
-        TileToMoveTo = Vector2Int.zero; // Nem releváns
-        TargetToAttack = null;         // Nem releváns
+        TileToMoveTo = Vector2Int.zero;
+        TargetToAttack = null;
     }
 
-    // Konstruktor: Csak Lépés (ha nincs kit támadni)
     public AIAction(float score, Vector2Int position)
     {
         Type = AIActionType.Move;
@@ -38,7 +32,6 @@ public class AIAction
         TargetToAttack = null;
     }
 
-    // Konstruktor: Lépés ÉS Támadás (a legjobb akció)
     public AIAction(float score, Vector2Int position, Chessman target)
     {
         Type = AIActionType.Attack;
@@ -208,9 +201,8 @@ public class CombatManager : MonoBehaviour
     {
         ShowMessage($"{enemyUnit.GetName()} köre...");
         isProcessing = true;
-        yield return new WaitForSeconds(0.75f); // AI "gondolkodási" idő
+        yield return new WaitForSeconds(0.75f);
 
-        // 1. ADATGYŰJTÉS
         List<Chessman> alivePlayers = playerTeam.FindAll(p => p != null && p.IsAlive());
         if (alivePlayers.Count == 0)
         {
@@ -218,31 +210,19 @@ public class CombatManager : MonoBehaviour
             yield break;
         }
 
-        // 2. AKCIÓK GENERÁLÁSA ÉS PONTOZÁSA
         List<AIAction> allPossibleActions = new List<AIAction>();
 
-        // Lekérjük az ÖSSZES mezőt, ahova léphetünk
-        // (A te GetValidMoveTiles() metódusod már helyesen tartalmazza az aktuális pozíciót is!)
         HashSet<Vector2Int> possibleMoveTiles = enemyUnit.GetValidMoveTiles();
 
-        // Végigmegyünk minden lehetséges lépésen...
         foreach (Vector2Int movePos in possibleMoveTiles)
         {
-            // ...és felmérjük, milyen akciókat tudunk csinálni ARRÓL A MEZŐRŐL
             EvaluateActionsFromPosition(enemyUnit, movePos, alivePlayers, allPossibleActions);
         }
 
-        // Végül hozzáadjuk a "Várakozás" opciót, mint legrosszabb esetet
         allPossibleActions.Add(new AIAction(AIActionType.Wait, 1.0f));
 
-
-        // 3. VÉGREHAJTÁS (A legjobb akció kiválasztása)
         AIAction bestAction = allPossibleActions.OrderByDescending(action => action.Score).First();
 
-        // --- ÚJ VÉGREHAJTÁSI LOGIKA ---
-
-        // 1. LÉPÉS (ha szükséges)
-        // Ha a legjobb terv lépést is tartalmaz (nem csak helyben támadást)
         if (bestAction.TileToMoveTo != enemyUnit.gridPosition && (bestAction.Type == AIActionType.Move || bestAction.Type == AIActionType.Attack))
         {
             enemyUnit.SetSelected(true);
@@ -252,7 +232,6 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
 
-        // 2. TÁMADÁS (ha a terv része)
         if (bestAction.Type == AIActionType.Attack)
         {
             Chessman target = bestAction.TargetToAttack;
@@ -262,14 +241,13 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             if (attackSound != null && musicSource != null) musicSource.PlayOneShot(attackSound);
-            yield return enemyUnit.AttackAnimation(target); // Támadás animáció
+            yield return enemyUnit.AttackAnimation(target);
             if (hitSound != null && musicSource != null) musicSource.PlayOneShot(hitSound);
 
             target.SetHighlight(false);
             yield return new WaitForSeconds(0.5f);
         }
 
-        // 3. VÁRAKOZÁS (ha ez volt a terv)
         if (bestAction.Type == AIActionType.Wait)
         {
             ShowMessage($"{enemyUnit.GetName()} várakozik.");
@@ -278,7 +256,6 @@ public class CombatManager : MonoBehaviour
 
         enemyUnit.SetSelected(false);
 
-        // Kör vége
         isProcessing = false;
         if (!CheckGameOver())
         {
@@ -288,27 +265,21 @@ public class CombatManager : MonoBehaviour
 
     private void EvaluateActionsFromPosition(Chessman aiUnit, Vector2Int simulatedPos, List<Chessman> allPlayers, List<AIAction> actionsList)
     {
-        // 1. Megkeressük a legközelebbi játékost (a lépés pontozásához)
         Chessman closestPlayer = FindClosestPlayer(aiUnit, allPlayers);
         if (closestPlayer == null) return; 
 
-        // 2. Pontozzuk magát a LÉPÉST (minél közelebb, annál jobb)
         int currentDistance = CalculateDistance(aiUnit.gridPosition, closestPlayer.gridPosition);
         int newDistance = CalculateDistance(simulatedPos, closestPlayer.gridPosition);
-        // A lépés alap pontszáma: 10 pont/mező közeledés
         float moveScore = (currentDistance - newDistance) * 10f; 
 
-        // Büntetés (veszélyes mezőre lépés)
         foreach (Chessman player in allPlayers)
         {
             if (player.GetValidAttackTilesFrom(player.gridPosition).Contains(simulatedPos))
             {
-                moveScore -= 50; // Veszélyes mező, -50 pont
+                moveScore -= 50;
             }
         }
         
-        // 3. Megnézzük, kit tudunk TÁMADNI erről az ÚJ pozícióról
-        // Itt használjuk az új "szimulátor" függvényünket!
         HashSet<Vector2Int> attackTiles = aiUnit.GetValidAttackTilesFrom(simulatedPos);
         bool canAttack = false;
 
@@ -316,35 +287,27 @@ public class CombatManager : MonoBehaviour
         {
             Chessman target = gridManager.GetCharacterAt(attackTile);
             
-            // Ha a mezőn van egy ÉLŐ JÁTÉKOS...
             if (target != null && !target.isEnemy && target.IsAlive())
             {
                 canAttack = true;
                 
-                // 4. PONTOZZUK A TÁMADÁST
-                float attackScore = 100f; // Alap pontszám egy támadásért
+                float attackScore = 100f;
             
-                // ÉLET ALAPJÁN: Minél kevesebb az élete, annál több pont
                 attackScore += (target.GetMaxHealth() - target.GetCurrentHealth()) * 10; 
             
-                // "KILLING BLOW" BÓNUSZ
                 if (target.GetCurrentHealth() <= aiUnit.GetDamage())
                 {
                     attackScore += 1000f;
                 }
                 
-                // VÉGSŐ PONTSZÁM: A lépés pontszáma + a támadás pontszáma
                 float totalScore = moveScore + attackScore;
                 
-                // Hozzáadjuk a teljes "Lépés + Támadás" tervet
                 actionsList.Add(new AIAction(totalScore, simulatedPos, target));
             }
         }
 
-        // 5. Ha erről a mezőről NEM tudtunk támadni, de a lépés maga jó volt
         if (!canAttack && moveScore > 0)
         {
-            // Hozzáadunk egy "Csak Lépés" tervet
             actionsList.Add(new AIAction(moveScore, simulatedPos));
         }
     }
