@@ -201,9 +201,21 @@ public class Chessman : MonoBehaviour
 
     public int GetHealth() { return _characterData?.CurrentHealth ?? 0; }
     public int GetDamage() { return _characterData?.AttackPower ?? 0; }
-    public bool TakeDamage(int amount)
+    // attacker may be null (e.g., environmental damage). If attacker is provided and this
+    // has an active reflect shield, the incoming damage is prevented and the attacker
+    // takes 1 damage instead.
+    public bool TakeDamage(int amount, Chessman attacker = null)
     {
         if (_characterData == null) return false;
+
+        // Reflect logic: if reflect is active and an attacker is present, block damage
+        // and damage the attacker by 1 instead. Do not cause recursive reflection.
+        if (attacker != null && reflectActive)
+        {
+            Debug.Log($"{_characterData.Name} blocked the attack and reflects 1 damage to {attacker.GetName()}");
+            attacker.TakeDamage(1, null);
+            return false;
+        }
 
         bool died = _characterData.TakeDamage(amount);
 
@@ -269,7 +281,7 @@ public class Chessman : MonoBehaviour
         float moveTime = 0.2f;
         float elapsed = 0f;
 
-        SetAnimationTrigger("Attack");
+    SetAnimationTrigger("Attack");
 
         // ÚJ SOR: Támadás hang lejátszása
         PlaySound(attackSound);
@@ -281,7 +293,7 @@ public class Chessman : MonoBehaviour
             yield return null;
         }
 
-        target.TakeDamage(GetDamage()); // A GetDamage() lekéri a logikai adatot
+        target.TakeDamage(GetDamage(), this); // A GetDamage() lekéri a logikai adatot; pass attacker for reflect
         yield return new WaitForSeconds(0.1f);
 
         elapsed = 0f;
@@ -357,6 +369,24 @@ public class Chessman : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    // Reflect/Shield state: when true, incoming attacks are blocked and attacker loses 1 HP.
+    private bool reflectActive = false;
+
+    public void ActivateReflect()
+    {
+        reflectActive = true;
+        Debug.Log($"{GetName()} reflect activated.");
+    }
+
+    public void DeactivateReflect()
+    {
+        if (reflectActive)
+        {
+            reflectActive = false;
+            Debug.Log($"{GetName()} reflect deactivated.");
+        }
     }
 
     public void SetSelected(bool selected)

@@ -4,31 +4,31 @@ using UnityEngine;
 public class DamageAbility : Ability
 {
     public int damageAmount;
-    public GameObject effectPrefab; // Pl. robbanás effekt
+    public GameObject effectPrefab; // Pl. robbanï¿½s effekt
 
-    // Felülírjuk az Activate funkciót, Chessman-t használva
+    // Felï¿½lï¿½rjuk az Activate funkciï¿½t, Chessman-t hasznï¿½lva
     public override bool Activate(Chessman user, Chessman target)
     {
-        // Ha nincs célpont VAGY a célpont szövetséges (barát)
+        // Ha nincs cï¿½lpont VAGY a cï¿½lpont szï¿½vetsï¿½ges (barï¿½t)
         if (target == null || target.player == user.player)
         {
-            // De ha a TargetType 'Self', akkor engedjük (bár sebzésnél fura)
+            // De ha a TargetType 'Self', akkor engedjï¿½k (bï¿½r sebzï¿½snï¿½l fura)
             if (targetType != TargetType.Self)
             {
-                return false; // Sikertelen használat, nem ellenségre céloztunk
+                return false; // Sikertelen hasznï¿½lat, nem ellensï¿½gre cï¿½loztunk
             }
         }
 
-        Debug.Log($"{user.name} használja: {abilityName} -> {target.name} (-{damageAmount} HP)");
+        Debug.Log($"{user.name} hasznï¿½lja: {abilityName} -> {target.name} (-{damageAmount} HP)");
 
-        // A Chessman.cs-ben lévõ TakeDamage függvényt hívjuk
-        target.TakeDamage(damageAmount);
+    // A Chessman.cs-ben lï¿½vï¿½ TakeDamage fï¿½ggvï¿½nyt hï¿½vjuk (include attacker so reflect works)
+    target.TakeDamage(damageAmount, user);
 
         if (effectPrefab != null)
         {
             Instantiate(effectPrefab, target.transform.position, Quaternion.identity);
         }
 
-        return true; // Sikeres használat
+        return true; // Sikeres hasznï¿½lat
     }
 }

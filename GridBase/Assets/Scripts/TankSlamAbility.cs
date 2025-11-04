@@ -26,7 +26,7 @@ public class TankSlamAbility : Ability
                 if (!c.IsAlive()) continue;
                 if (c.isEnemy == user.isEnemy) continue; // only hit enemies
 
-                c.TakeDamage(damage);
+                c.TakeDamage(damage, user);
                 hits++;
             }
         }
