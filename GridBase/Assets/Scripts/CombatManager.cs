@@ -468,6 +468,13 @@ public class CombatManager : MonoBehaviour
 
         selectedAbility = ability;
         HideActionUI();
+        // If this is a self-targeting ability (no target click needed), execute immediately
+        if (ability != null && ability.targetType == Ability.TargetType.Self)
+        {
+            StartCoroutine(ExecutePlayerAbility(ability, selectedAttacker));
+            return;
+        }
+
         if (gridManager != null && selectedAttacker != null)
         {
             Debug.Log($"KÉPESSÉG ELŐKÉSZÍTÉS: Bábu={selectedAttacker.GetName()}, Képesség={ability.abilityName}, Hatótáv={ability.range}");

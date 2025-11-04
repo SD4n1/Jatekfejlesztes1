@@ -13,8 +13,8 @@ public class HealerCharacter : BaseCharacter
         MaxHealth = 7;
         CurrentHealth = MaxHealth;
         AttackPower = 1;
-        MoveRange = 4;
-        AttackRange = 1;
+        MoveRange = 2;
+        AttackRange = 2;
     }
 
     public override HashSet<Vector2Int> GetValidMoveTiles(Vector2Int gridPos, GridManager grid)

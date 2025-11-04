@@ -10,11 +10,11 @@ public class TankCharacter : BaseCharacter
 
     public override void InitializeStats()
     {
-        MaxHealth = 15;
+        MaxHealth = 14;
         CurrentHealth = MaxHealth;
-        AttackPower = 3;
-        MoveRange = 3;
-        AttackRange = 1;
+        AttackPower = 5;
+        MoveRange = 2;
+        AttackRange = 2;
     }
 
     public override HashSet<Vector2Int> GetValidMoveTiles(Vector2Int gridPos, GridManager grid)
