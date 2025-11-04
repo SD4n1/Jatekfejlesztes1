@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HealAbility", menuName = "Abilities/HealAbility")]
 public class HealAbility : Ability
 {
-    private const int HealAmount = 5;
+    private const int HealAmount = 3;
 
     public override bool Activate(Chessman user, Chessman target)
     {

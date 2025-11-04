@@ -201,9 +201,40 @@ public class Chessman : MonoBehaviour
 
     public int GetHealth() { return _characterData?.CurrentHealth ?? 0; }
     public int GetDamage() { return _characterData?.AttackPower ?? 0; }
-    public bool TakeDamage(int amount)
+    // attacker may be null (e.g., environmental damage). If attacker is provided and this
+    // has an active reflect shield, the incoming damage is prevented and the attacker
+    // takes 1 damage instead.
+    public bool TakeDamage(int amount, Chessman attacker = null)
     {
         if (_characterData == null) return false;
+
+        // Reflect logic: if reflect is active and an attacker is present, block damage
+        // and damage the attacker by 1 instead. Do not cause recursive reflection.
+        if (attacker != null && reflectActive)
+        {
+            Debug.Log($"{_characterData.Name} blocked the attack and reflects 1 damage to {attacker.GetName()}");
+
+            // If the reflect was created by an Ability, let that ability handle visuals/sounds
+            // when the reflect triggers. Otherwise, use default behaviour.
+            if (activeReflectAbility != null)
+            {
+                try { activeReflectAbility.OnReflect(this, attacker); } catch { }
+            }
+            else
+            {
+                try { SetAnimationTrigger("Reflect"); } catch { }
+                PlayAbilitySound();
+            }
+
+            // Damage the attacker by 1 (pass null as attacker to avoid recursive reflection)
+            attacker.TakeDamage(1, null);
+
+            // After successfully reflecting one attack, deactivate the reflect so it only
+            // blocks a single hit as requested.
+            DeactivateReflect();
+
+            return false;
+        }
 
         bool died = _characterData.TakeDamage(amount);
 
@@ -269,7 +300,7 @@ public class Chessman : MonoBehaviour
         float moveTime = 0.2f;
         float elapsed = 0f;
 
-        SetAnimationTrigger("Attack");
+    SetAnimationTrigger("Attack");
 
         // ÚJ SOR: Támadás hang lejátszása
         PlaySound(attackSound);
@@ -281,7 +312,7 @@ public class Chessman : MonoBehaviour
             yield return null;
         }
 
-        target.TakeDamage(GetDamage()); // A GetDamage() lekéri a logikai adatot
+        target.TakeDamage(GetDamage(), this); // A GetDamage() lekéri a logikai adatot; pass attacker for reflect
         yield return new WaitForSeconds(0.1f);
 
         elapsed = 0f;
@@ -297,8 +328,12 @@ public class Chessman : MonoBehaviour
     public IEnumerator AbilityAnimation(Chessman target, Ability abilityToUse)
     {
 
-        SetAnimationTrigger("Ability");
-        PlayAbilitySound();
+        // Only play the user's activation animation/sound if the ability allows it.
+        if (abilityToUse == null || abilityToUse.playActivationAnimation)
+        {
+            SetAnimationTrigger("Ability");
+            PlayAbilitySound();
+        }
 
         if (target != null && target != this)
         {
@@ -357,6 +392,29 @@ public class Chessman : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    // Reflect/Shield state: when true, incoming attacks are blocked and attacker loses 1 HP.
+    private bool reflectActive = false;
+    // If reflectActive is true, this holds the Ability instance that created the reflect
+    // so we can invoke ability-specific visuals/sounds when the reflect triggers.
+    private Ability activeReflectAbility = null;
+
+    public void ActivateReflect(Ability sourceAbility = null)
+    {
+        reflectActive = true;
+        activeReflectAbility = sourceAbility;
+        Debug.Log($"{GetName()} reflect activated.");
+    }
+
+    public void DeactivateReflect()
+    {
+        if (reflectActive)
+        {
+            reflectActive = false;
+            activeReflectAbility = null;
+            Debug.Log($"{GetName()} reflect deactivated.");
+        }
     }
 
     public void SetSelected(bool selected)

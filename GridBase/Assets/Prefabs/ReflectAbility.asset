@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e78b35abbbba1fc4a9f0239d74484496, type: 3}
-  m_Name: Ability
-  m_EditorClassIdentifier: Assembly-CSharp::DamageAbility
-  abilityName: "K\xE9pess\xE9g"
+  m_Script: {fileID: 11500000, guid: 18ad2844b4920774b96a1633e16f57e6, type: 3}
+  m_Name: ReflectAbility
+  m_EditorClassIdentifier: Assembly-CSharp::ReflectAbility
+  abilityName: Reflect
   description: 
   icon: {fileID: 0}
-  range: 3
-  playActivationAnimation: 1
-  targetType: 1
+  range: 0
+  targetType: 0
   cost: 0
-  damageAmount: 2
-  effectPrefab: {fileID: 0}
