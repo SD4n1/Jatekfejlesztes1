@@ -13,7 +13,7 @@ public class TankCharacter : BaseCharacter
         MaxHealth = 14;
         CurrentHealth = MaxHealth;
         AttackPower = 5;
-        MoveRange = 1;
+        MoveRange = 2;
         AttackRange = 1;
     }
 

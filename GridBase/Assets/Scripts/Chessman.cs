@@ -213,7 +213,26 @@ public class Chessman : MonoBehaviour
         if (attacker != null && reflectActive)
         {
             Debug.Log($"{_characterData.Name} blocked the attack and reflects 1 damage to {attacker.GetName()}");
+
+            // If the reflect was created by an Ability, let that ability handle visuals/sounds
+            // when the reflect triggers. Otherwise, use default behaviour.
+            if (activeReflectAbility != null)
+            {
+                try { activeReflectAbility.OnReflect(this, attacker); } catch { }
+            }
+            else
+            {
+                try { SetAnimationTrigger("Reflect"); } catch { }
+                PlayAbilitySound();
+            }
+
+            // Damage the attacker by 1 (pass null as attacker to avoid recursive reflection)
             attacker.TakeDamage(1, null);
+
+            // After successfully reflecting one attack, deactivate the reflect so it only
+            // blocks a single hit as requested.
+            DeactivateReflect();
+
             return false;
         }
 
@@ -309,8 +328,12 @@ public class Chessman : MonoBehaviour
     public IEnumerator AbilityAnimation(Chessman target, Ability abilityToUse)
     {
 
-        SetAnimationTrigger("Ability");
-        PlayAbilitySound();
+        // Only play the user's activation animation/sound if the ability allows it.
+        if (abilityToUse == null || abilityToUse.playActivationAnimation)
+        {
+            SetAnimationTrigger("Ability");
+            PlayAbilitySound();
+        }
 
         if (target != null && target != this)
         {
@@ -373,10 +396,14 @@ public class Chessman : MonoBehaviour
 
     // Reflect/Shield state: when true, incoming attacks are blocked and attacker loses 1 HP.
     private bool reflectActive = false;
+    // If reflectActive is true, this holds the Ability instance that created the reflect
+    // so we can invoke ability-specific visuals/sounds when the reflect triggers.
+    private Ability activeReflectAbility = null;
 
-    public void ActivateReflect()
+    public void ActivateReflect(Ability sourceAbility = null)
     {
         reflectActive = true;
+        activeReflectAbility = sourceAbility;
         Debug.Log($"{GetName()} reflect activated.");
     }
 
@@ -385,6 +412,7 @@ public class Chessman : MonoBehaviour
         if (reflectActive)
         {
             reflectActive = false;
+            activeReflectAbility = null;
             Debug.Log($"{GetName()} reflect deactivated.");
         }
     }

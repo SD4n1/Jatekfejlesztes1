@@ -15,8 +15,9 @@ MonoBehaviour:
   abilityName: "K\xE9pess\xE9g"
   description: 
   icon: {fileID: 0}
-  range: 2
+  range: 3
+  playActivationAnimation: 1
   targetType: 1
   cost: 0
-  damageAmount: 5
+  damageAmount: 2
   effectPrefab: {fileID: 0}
