@@ -85,6 +85,13 @@ public class TurnOrderManager : MonoBehaviour
         currentTurnIndex++;
 
         UpdateTurnOrderUI();
+        // If the current unit had a temporary reflect/shield active from a previous turn,
+        // deactivate it now — reflect lasts only until the unit's next turn.
+    Chessman currentUnit = GetCurrentUnit();
+        if (currentUnit != null)
+        {
+            currentUnit.DeactivateReflect();
+        }
     }
 
     void RefreshTurnOrder()

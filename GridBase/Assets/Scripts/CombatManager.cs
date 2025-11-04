@@ -395,18 +395,45 @@ public class CombatManager : MonoBehaviour
             // 3. CÉLPONT VÁLASZTÁS
             else if (currentState == CombatState.SelectingTarget)
             {
-                if (clickedChar == null)
-                {
-                    gridManager.ClearAttackTiles();
-                    ShowActionUI();
-                    return;
-                }
-
                 // Determine what we're currently targeting: ability vs normal attack
                 Ability.TargetType desiredTargetType = Ability.TargetType.Enemy; // default for normal attacks
                 if (selectedAbility != null)
                 {
                     desiredTargetType = selectedAbility.targetType;
+                }
+
+                // If this is a tile-targeting ability, allow clicking empty tiles as direction choices
+                if (desiredTargetType == Ability.TargetType.Tile)
+                {
+                    // clicked an empty tile -> try to use as direction selection
+                    if (gridManager == null || selectedAttacker == null)
+                    {
+                        ShowMessage("Hiba: nincs grid vagy kiválasztott bábu.");
+                        return;
+                    }
+
+                    // Accept any tile that lies orthogonally from the attacker (same row or same column),
+                    // not the attacker's own tile. This allows clicking 1,2,3 tiles ahead to pick that direction.
+                    Vector2Int delta = gridPos - selectedAttacker.gridPosition;
+                    bool isOrthogonalLine = (delta.x == 0 && delta.y != 0) || (delta.y == 0 && delta.x != 0);
+                    if (isOrthogonalLine)
+                    {
+                        SelectTile(gridPos);
+                    }
+                    else
+                    {
+                        ShowMessage("Válassz egy irányt (fel/le/jobbra/balra) egy vonal mentén a bábutól!");
+                    }
+
+                    return;
+                }
+
+                // Non-tile targeting: require a clicked character
+                if (clickedChar == null)
+                {
+                    gridManager.ClearAttackTiles();
+                    ShowActionUI();
+                    return;
                 }
 
                 bool validTarget = false;
@@ -423,11 +450,6 @@ public class CombatManager : MonoBehaviour
                     case Ability.TargetType.Enemy:
                         validTarget = clickedChar.isEnemy && clickedChar.IsAlive();
                         if (!validTarget) ShowMessage("Őt nem támadhatod meg!");
-                        break;
-                    case Ability.TargetType.Tile:
-                        // Tile-targeting abilities would be handled elsewhere; treat as invalid here
-                        ShowMessage("Érvénytelen célpont.");
-                        validTarget = false;
                         break;
                 }
 
@@ -584,6 +606,12 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    void SelectTile(Vector2Int tilePos)
+    {
+        gridManager.ClearAttackTiles();
+        StartCoroutine(ExecutePlayerAbility(selectedAbility, tilePos));
+    }
+
     //--------------------------------------------------------------------------
     // Játékos Akció Coroutine-ok (Animációk)
     //--------------------------------------------------------------------------
@@ -624,6 +652,36 @@ public class CombatManager : MonoBehaviour
         yield return selectedAttacker.AbilityAnimation(target, ability);
 
         CheckPlayerTurnEnd();
+    }
+
+    IEnumerator ExecutePlayerAbility(Ability ability, Vector2Int tile)
+    {
+        isProcessing = true;
+        currentState = CombatState.Processing;
+        characterHasActed = true;
+        ShowMessage($"{selectedAttacker.GetName()} használja: {ability.abilityName}!");
+
+        // Play user's activation animation only if the ability allows it
+        yield return selectedAttacker.AbilityAnimation(null, ability);
+
+        // Call the tile-based activation hook
+        try
+        {
+            ability.ActivateOnTile(selectedAttacker, tile);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Hiba a képesség ActivateOnTile meghívásakor: {ex}");
+        }
+
+        CheckPlayerTurnEnd();
+    }
+
+    bool IsOrthogonalNeighbor(Vector2Int a, Vector2Int b)
+    {
+        int dx = Mathf.Abs(a.x - b.x);
+        int dy = Mathf.Abs(a.y - b.y);
+        return (dx == 1 && dy == 0) || (dx == 0 && dy == 1);
     }
 
     void CheckPlayerTurnEnd()
