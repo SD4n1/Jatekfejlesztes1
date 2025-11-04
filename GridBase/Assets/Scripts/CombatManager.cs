@@ -619,12 +619,10 @@ public class CombatManager : MonoBehaviour
         currentState = CombatState.Processing;
         characterHasActed = true;
         ShowMessage($"{selectedAttacker.GetName()} használja: {ability.abilityName}!");
-        yield return new WaitForSeconds(0.5f);
 
-        bool success = ability.Activate(selectedAttacker, target);
 
-        if (!success) ShowMessage("Sikertelen képesség!");
-        yield return new WaitForSeconds(0.5f);
+        yield return selectedAttacker.AbilityAnimation(target, ability);
+
         CheckPlayerTurnEnd();
     }
 

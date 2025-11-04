@@ -313,7 +313,7 @@ MonoBehaviour:
   attackButton: {fileID: 1751779677}
   abilityButton1: {fileID: 1969184777}
   waitButton: {fileID: 1780977238}
-  musicSource: {fileID: 0}
+  musicSource: {fileID: 295744986}
   combatMusic: {fileID: 0}
   attackSound: {fileID: 0}
   hitSound: {fileID: 0}
@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "B\xE1stya"
@@ -401,6 +405,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f157c2a880b9f06419ae5cd02dcd872a, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: c7cd9c850c7a7d14290525af2a3b2a22, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -490,6 +502,14 @@ PrefabInstance:
       value: 0.005848944
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.57
       objectReference: {fileID: 0}
@@ -498,9 +518,21 @@ PrefabInstance:
       value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6480215144404413659, guid: d64d50552dd6ed14fb85994246302ce0, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -913,6 +945,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Kir\xE1ly"
@@ -941,6 +977,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2727210ce5ec0f440bde3f89331c1e0a, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2727210ce5ec0f440bde3f89331c1e0a, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -1030,6 +1074,14 @@ PrefabInstance:
       value: -0.01097101
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.25
       objectReference: {fileID: 0}
@@ -1038,9 +1090,21 @@ PrefabInstance:
       value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -555674787474596204, guid: 0760566873b350541af4e6d193893083, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -1145,6 +1209,135 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 794579227418573991, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
   m_PrefabInstance: {fileID: 1907986113}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &295744985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295744987}
+  - component: {fileID: 295744986}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &295744986
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295744985}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 760e80c2e83d6ec48adb753df8d20931, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.03
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &295744987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295744985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346276736 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 794579227418573991, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -1302,6 +1495,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "B\xE1stya"
@@ -1334,6 +1531,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 237e3ddf96e97824bb64d7b54e897880, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 237e3ddf96e97824bb64d7b54e897880, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -1423,6 +1628,14 @@ PrefabInstance:
       value: 0.05392599
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.84
       objectReference: {fileID: 0}
@@ -1431,9 +1644,21 @@ PrefabInstance:
       value: 2.61
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2517337920827173850, guid: 7da2442d827204b4189b8abd316df1ec, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -1717,6 +1942,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Fut\xF3"
@@ -1745,6 +1974,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 02d0808cc136f154a82945e7d42d84f5, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 02d0808cc136f154a82945e7d42d84f5, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: black_ranger
       value: 
@@ -1834,6 +2071,14 @@ PrefabInstance:
       value: -0.0033385158
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.34
       objectReference: {fileID: 0}
@@ -1843,11 +2088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Size.x
-      value: 1.34
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Size.y
-      value: 2.62
+      value: 2.61
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
@@ -2327,6 +2572,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Kir\xE1lyn\u0151"
@@ -2355,6 +2604,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ad93f80743536149b23a489488286e0, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ad93f80743536149b23a489488286e0, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -2874,6 +3131,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Husz\xE1r"
@@ -2902,6 +3163,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a387f44ff5f66b2429049ac8e243042a, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: a387f44ff5f66b2429049ac8e243042a, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: black_healer
       value: 
@@ -2993,6 +3262,14 @@ PrefabInstance:
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Offset.y
       value: 0.07011056
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -3260,6 +3537,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Fut\xF3"
@@ -3288,6 +3569,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d7a3974b3619f2843bde8a0444f5d30d, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: d7a3974b3619f2843bde8a0444f5d30d, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -3377,6 +3666,14 @@ PrefabInstance:
       value: -0.036892653
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.7
       objectReference: {fileID: 0}
@@ -3385,9 +3682,21 @@ PrefabInstance:
       value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7158920668473833446, guid: 86351d2fa96319044ab2c65bfd015a54, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -3657,6 +3966,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Kir\xE1lyn\u0151"
@@ -3685,6 +3998,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 233daca82de39094b887472c52dc0d20, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: e921bd1a5d1f2af448985675af23eef2, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -3774,6 +4095,14 @@ PrefabInstance:
       value: -0.022431135
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.31
       objectReference: {fileID: 0}
@@ -3782,9 +4111,21 @@ PrefabInstance:
       value: 2.64
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2591137392909948214, guid: 3a7a48fc4c0b19b4b8f2cda0a00d241b, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -3975,6 +4316,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Husz\xE1r"
@@ -4003,6 +4348,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5342e4a8d9478cc468699f22b3ba9d20, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a51932e8810d5245b82623a7292736a, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -4096,6 +4449,14 @@ PrefabInstance:
       value: 0.017616093
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.91
       objectReference: {fileID: 0}
@@ -4104,9 +4465,21 @@ PrefabInstance:
       value: 2.61
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2042103777447199050, guid: 0faebf9a2a3b0644894f8277956472e2, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -4838,6 +5211,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4070767209631863346, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: player
       value: "Kir\xE1ly"
@@ -4866,6 +5243,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4522fb83826dfdd42a1c401a04aa4257, type: 3}
+    - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 8300000, guid: fda8462c760474e4d8fd74cb32301433, type: 3}
     - target: {fileID: 4337212828336243067, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: healthSlider
       value: 
@@ -4955,6 +5340,14 @@ PrefabInstance:
       value: 0.01738584
       objectReference: {fileID: 0}
     - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243855644301419255, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.09
       objectReference: {fileID: 0}
@@ -4963,9 +5356,21 @@ PrefabInstance:
       value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7032658692326061435, guid: beae43152a7dad64abe9c3512c34b915, type: 3}
+    - target: {fileID: 7490912534968781854, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 523893691289333625, guid: 3dba1e61ee2b3424c802acce35594ea3, type: 3}
@@ -5714,3 +6119,4 @@ SceneRoots:
   - {fileID: 1576556652}
   - {fileID: 541822411}
   - {fileID: 2138672338}
+  - {fileID: 295744987}

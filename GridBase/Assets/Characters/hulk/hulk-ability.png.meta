@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: c37781f76299d6947b65647f33fce02d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4152699023265888686
+    second: hulk-ability_0
+  - first:
+      213: 285882473895199859
+    second: hulk-ability_1
+  - first:
+      213: 7271944957265227344
+    second: hulk-ability_2
+  - first:
+      213: -5737538560838602192
+    second: hulk-ability_3
+  - first:
+      213: -4999164253112848538
+    second: hulk-ability_4
+  - first:
+      213: -6956857303963935448
+    second: hulk-ability_5
+  - first:
+      213: 3186275783699111962
+    second: hulk-ability_6
+  - first:
+      213: 2961369232859784252
+    second: hulk-ability_7
+  - first:
+      213: 2058579524272872010
+    second: hulk-ability_8
+  - first:
+      213: -3474114106626330061
+    second: hulk-ability_9
+  - first:
+      213: 1786633880777750892
+    second: hulk-ability_10
+  - first:
+      213: 7352695776628543164
+    second: hulk-ability_11
+  - first:
+      213: -1416958562567144130
+    second: hulk-ability_12
+  - first:
+      213: 6850115109919050399
+    second: hulk-ability_13
+  - first:
+      213: 1416440475102158424
+    second: hulk-ability_14
+  - first:
+      213: -4716748131624888450
+    second: hulk-ability_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hulk-ability_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 724
+        width: 239
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25600238d36ae56c0800000000000000
+      internalID: -4152699023265888686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_1
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 724
+        width: 239
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37488086898a7f300800000000000000
+      internalID: 285882473895199859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_2
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 724
+        width: 236
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05eacf309632be460800000000000000
+      internalID: 7271944957265227344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_3
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 382
+        width: 258
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 032fb14e31b2060b0800000000000000
+      internalID: -5737538560838602192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_4
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 382
+        width: 227
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66fa06739966f9ab0800000000000000
+      internalID: -4999164253112848538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_5
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 367
+        width: 313
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82dd52c1427447f90800000000000000
+      internalID: -6956857303963935448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 173
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a10a0d391fce73c20800000000000000
+      internalID: 3186275783699111962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_7
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 18
+        width: 206
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c34e06590a5e81920800000000000000
+      internalID: 2961369232859784252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_8
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 167
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4a5d26ab2b819c10800000000000000
+      internalID: 2058579524272872010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_9
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 15
+        width: 362
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3323d5d60a779cfc0800000000000000
+      internalID: -3474114106626330061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_10
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 15
+        width: 341
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c697f6f6c066bc810800000000000000
+      internalID: 1786633880777750892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 103
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbe85734ad50a0660800000000000000
+      internalID: 7352695776628543164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_12
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 74
+        width: 37
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3dbcb8d1b3f55ce0800000000000000
+      internalID: -1416958562567144130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_13
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 89
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ac245266f701f50800000000000000
+      internalID: 6850115109919050399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_14
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 26
+        width: 107
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e13f38b1538a310800000000000000
+      internalID: 1416440475102158424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hulk-ability_15
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 57
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77d28f809eba8eb0800000000000000
+      internalID: -4716748131624888450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      hulk-ability_0: -4152699023265888686
+      hulk-ability_1: 285882473895199859
+      hulk-ability_10: 1786633880777750892
+      hulk-ability_11: 7352695776628543164
+      hulk-ability_12: -1416958562567144130
+      hulk-ability_13: 6850115109919050399
+      hulk-ability_14: 1416440475102158424
+      hulk-ability_15: -4716748131624888450
+      hulk-ability_2: 7271944957265227344
+      hulk-ability_3: -5737538560838602192
+      hulk-ability_4: -4999164253112848538
+      hulk-ability_5: -6956857303963935448
+      hulk-ability_6: 3186275783699111962
+      hulk-ability_7: 2961369232859784252
+      hulk-ability_8: 2058579524272872010
+      hulk-ability_9: -3474114106626330061
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
