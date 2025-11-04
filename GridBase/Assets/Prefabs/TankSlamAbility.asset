@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e259f4ae2f4c946b91ce48b10f1fc8, type: 3}
-  m_Name: HealAbility
-  m_EditorClassIdentifier: Assembly-CSharp::HealAbility
-  abilityName: "Gy\xF3gy\xEDt\xE1s"
+  m_Script: {fileID: 11500000, guid: aae96249787553b4cb42f2e48d32b241, type: 3}
+  m_Name: TankSlamAbility
+  m_EditorClassIdentifier: Assembly-CSharp::TankSlamAbility
+  abilityName: Slam
   description: 
   icon: {fileID: 0}
-  range: 2
-  targetType: 2
+  range: 1
+  targetType: 0
   cost: 0
