@@ -328,11 +328,37 @@ public class CombatManager : MonoBehaviour
                     ShowActionUI();
                     return;
                 }
-                if (!clickedChar.isEnemy || !clickedChar.IsAlive())
+
+                // Determine what we're currently targeting: ability vs normal attack
+                Ability.TargetType desiredTargetType = Ability.TargetType.Enemy; // default for normal attacks
+                if (selectedAbility != null)
                 {
-                    ShowMessage("Őt nem támadhatod meg!");
-                    return;
+                    desiredTargetType = selectedAbility.targetType;
                 }
+
+                bool validTarget = false;
+                switch (desiredTargetType)
+                {
+                    case Ability.TargetType.Ally:
+                        validTarget = !clickedChar.isEnemy;
+                        if (!validTarget) ShowMessage("Csak csapattársat választhatsz!");
+                        break;
+                    case Ability.TargetType.Self:
+                        validTarget = clickedChar == selectedAttacker;
+                        if (!validTarget) ShowMessage("Ezt csak magadon használhatod!");
+                        break;
+                    case Ability.TargetType.Enemy:
+                        validTarget = clickedChar.isEnemy && clickedChar.IsAlive();
+                        if (!validTarget) ShowMessage("Őt nem támadhatod meg!");
+                        break;
+                    case Ability.TargetType.Tile:
+                        // Tile-targeting abilities would be handled elsewhere; treat as invalid here
+                        ShowMessage("Érvénytelen célpont.");
+                        validTarget = false;
+                        break;
+                }
+
+                if (!validTarget) return;
 
                 int distance = CalculateDistance(selectedAttacker.gridPosition, clickedChar.gridPosition);
                 int currentAttackRange = (selectedAbility != null) ? selectedAbility.range : selectedAttacker.GetAttackRange();

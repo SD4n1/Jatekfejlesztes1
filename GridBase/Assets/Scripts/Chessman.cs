@@ -208,6 +208,18 @@ public class Chessman : MonoBehaviour
     }
     public bool IsAlive() { return _characterData?.IsAlive() ?? false; }
 
+    // Heal this chessman by amount (updates UI)
+    public void Heal(int amount)
+    {
+        if (_characterData == null) return;
+        _characterData.Heal(amount);
+        if (healthSlider != null)
+        {
+            healthSlider.value = _characterData.CurrentHealth;
+        }
+        Debug.Log($"{_characterData.Name} healed by {amount}, current HP: {_characterData.CurrentHealth}");
+    }
+
 
     public IEnumerator MoveToTile(Vector2Int targetTile)
     {
