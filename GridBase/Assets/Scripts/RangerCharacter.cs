@@ -13,7 +13,7 @@ public class RangerCharacter : BaseCharacter
         MaxHealth = 6;
         CurrentHealth = MaxHealth;
         AttackPower = 3;
-        MoveRange = 4;
+        MoveRange = 3;
         AttackRange = 3;
     }
 

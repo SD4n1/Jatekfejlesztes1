@@ -32,8 +32,16 @@ public abstract class BaseCharacter
         if (CurrentHealth < 0)
             CurrentHealth = 0;
 
-        // Visszajelzés: meghalt-e
+        // Visszajelzï¿½s: meghalt-e
         return CurrentHealth <= 0;
+    }
+
+    // Heal the character by amount (clamped to MaxHealth)
+    public virtual void Heal(int amount)
+    {
+        if (amount <= 0) return;
+        CurrentHealth += amount;
+        if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
     }
 
     public bool IsAlive() => CurrentHealth > 0;
