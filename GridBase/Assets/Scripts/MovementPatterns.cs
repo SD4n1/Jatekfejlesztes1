@@ -14,7 +14,20 @@ public static class MovementPatterns
 
         foreach (var dir in directions)
         {
-            for (int i = 1; i <= range; i++)
+            bool isDiagonal = Mathf.Abs(dir.x) == 1 && Mathf.Abs(dir.y) == 1;
+            // Exception: if range == 1, allow direct diagonal neighbors as reachable.
+            int maxSteps;
+            if (isDiagonal)
+            {
+                maxSteps = (range == 1) ? 1 : Mathf.Max(0, range - 1);
+            }
+            else
+            {
+                maxSteps = range;
+            }
+            if (maxSteps <= 0) continue;
+
+            for (int i = 1; i <= maxSteps; i++)
             {
                 Vector2Int target = pos + dir * i;
                 if (!grid.IsValidTile(target))

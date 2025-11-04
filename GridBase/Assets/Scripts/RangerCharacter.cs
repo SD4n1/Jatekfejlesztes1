@@ -10,10 +10,10 @@ public class RangerCharacter : BaseCharacter
 
     public override void InitializeStats()
     {
-        MaxHealth = 6;
+        MaxHealth = 7;
         CurrentHealth = MaxHealth;
         AttackPower = 3;
-        MoveRange = 3;
+        MoveRange = 2;
         AttackRange = 3;
     }
 

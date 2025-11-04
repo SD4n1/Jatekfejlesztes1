@@ -10,7 +10,7 @@ public class HealerCharacter : BaseCharacter
 
     public override void InitializeStats()
     {
-        MaxHealth = 7;
+        MaxHealth = 8;
         CurrentHealth = MaxHealth;
         AttackPower = 1;
         MoveRange = 2;

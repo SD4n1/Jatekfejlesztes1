@@ -10,10 +10,10 @@ public class FighterCharacter : BaseCharacter
 
     public override void InitializeStats()
     {
-        MaxHealth = 8;
+        MaxHealth = 9;
         CurrentHealth = MaxHealth;
         AttackPower = 4;
-        MoveRange = 4;
+        MoveRange = 3;
         AttackRange = 1;
     }
 
