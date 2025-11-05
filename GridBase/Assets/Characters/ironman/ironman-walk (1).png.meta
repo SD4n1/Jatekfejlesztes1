@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 442c5f69e3c7bb2479084e8b14c1b6a4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1359992092379204961
+    second: ironman-walk (1)_0
+  - first:
+      213: -5909134610458933389
+    second: ironman-walk (1)_1
+  - first:
+      213: 4872028472578038856
+    second: ironman-walk (1)_2
+  - first:
+      213: 3497639986662344529
+    second: ironman-walk (1)_3
+  - first:
+      213: 2602859629557287361
+    second: ironman-walk (1)_4
+  - first:
+      213: 2121587420530646169
+    second: ironman-walk (1)_5
+  - first:
+      213: 544610037730841667
+    second: ironman-walk (1)_6
+  - first:
+      213: 6293131861205551843
+    second: ironman-walk (1)_7
+  - first:
+      213: -3149204224034113601
+    second: ironman-walk (1)_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ironman-walk (1)_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 531
+        width: 125
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d4a9b3a99afd210800000000000000
+      internalID: 1359992092379204961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 530
+        width: 177
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37701a531698efda0800000000000000
+      internalID: -5909134610458933389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_2
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 266
+        width: 155
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c5a9b251cec9340800000000000000
+      internalID: 4872028472578038856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_3
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 530
+        width: 170
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 157063d590d1a8030800000000000000
+      internalID: 3497639986662344529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 265
+        width: 131
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c987f3ea073f1420800000000000000
+      internalID: 2602859629557287361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1
+        width: 153
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c9aa0b484617d10800000000000000
+      internalID: 2121587420530646169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_6
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 265
+        width: 170
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3441f00a1f7de8700800000000000000
+      internalID: 544610037730841667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 129
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ea89d7d512b55750800000000000000
+      internalID: 6293131861205551843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ironman-walk (1)_8
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 0
+        width: 160
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb779458177cb44d0800000000000000
+      internalID: -3149204224034113601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ironman-walk (1)_0: 1359992092379204961
+      ironman-walk (1)_1: -5909134610458933389
+      ironman-walk (1)_2: 4872028472578038856
+      ironman-walk (1)_3: 3497639986662344529
+      ironman-walk (1)_4: 2602859629557287361
+      ironman-walk (1)_5: 2121587420530646169
+      ironman-walk (1)_6: 544610037730841667
+      ironman-walk (1)_7: 6293131861205551843
+      ironman-walk (1)_8: -3149204224034113601
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

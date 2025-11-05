@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ad2844b4920774b96a1633e16f57e6, type: 3}
   m_Name: ReflectAbility
   m_EditorClassIdentifier: Assembly-CSharp::ReflectAbility
-  abilityName: Reflect
+  abilityName: Kontra
   description: 
   icon: {fileID: 0}
   range: 0
+  playActivationAnimation: 0
   targetType: 0
   cost: 0

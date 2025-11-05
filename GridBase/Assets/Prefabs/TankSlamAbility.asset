@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae96249787553b4cb42f2e48d32b241, type: 3}
   m_Name: TankSlamAbility
   m_EditorClassIdentifier: Assembly-CSharp::TankSlamAbility
-  abilityName: Slam
+  abilityName: "Z\xFAz\xE1s"
   description: 
   icon: {fileID: 0}
   range: 1
+  playActivationAnimation: 1
   targetType: 0
   cost: 0
