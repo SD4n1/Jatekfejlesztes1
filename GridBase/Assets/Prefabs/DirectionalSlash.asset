@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d10e6660a789a84e8f16b2d59d3ed4a, type: 3}
   m_Name: DirectionalSlash
   m_EditorClassIdentifier: Assembly-CSharp::DirectionalSlashAbility
-  abilityName: Directional Slash
+  abilityName: "Vill\xE1m"
   description: 'Choose a direction (up/down/left/right) adjacent to the user. Hits
     up to 3 tiles: closest takes 3, next 2, next 1.'
   icon: {fileID: 0}

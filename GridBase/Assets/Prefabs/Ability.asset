@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78b35abbbba1fc4a9f0239d74484496, type: 3}
   m_Name: Ability
   m_EditorClassIdentifier: Assembly-CSharp::DamageAbility
-  abilityName: "K\xE9pess\xE9g"
+  abilityName: "Reaktorl\xF6v\xE9s"
   description: 
   icon: {fileID: 0}
   range: 3
